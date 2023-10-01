@@ -1,0 +1,11 @@
+import "TheoryChapter.idl";
+
+namespace ProPractice
+{
+    [default_interface]
+    runtimeclass TheoryPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        TheoryPage();
+        Windows.Foundation.Collections.IObservableVector<TheoryChapter> TheoryChapters { get; };
+    }
+}
