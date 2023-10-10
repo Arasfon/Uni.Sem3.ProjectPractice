@@ -1,6 +1,9 @@
 #include "pch.h"
 
 #include "MainWindow.xaml.h"
+
+#include "WinUIEx.h"
+
 #if __has_include("MainWindow.g.cpp")
 #include "MainWindow.g.cpp"
 #endif
@@ -18,6 +21,7 @@ namespace winrt::ProPractice::implementation
 
         ExtendsContentIntoTitleBar(true);
         SetTitleBar(AppTitleBar());
+        WinUIEx::CenterOnScreen(*this);
     }
 
     void MainWindow::NavView_SelectionChanged(IInspectable const& sender, NavigationViewSelectionChangedEventArgs const& args)

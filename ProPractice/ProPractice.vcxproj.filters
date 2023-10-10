@@ -31,6 +31,9 @@
     <ClCompile Include="TheoryChapter.cpp">
       <Filter>Theory Structures</Filter>
     </ClCompile>
+    <ClCompile Include="WinUIEx.cpp">
+      <Filter>WinUIEx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -39,6 +42,9 @@
     </ClInclude>
     <ClInclude Include="TheoryChapter.h">
       <Filter>Theory Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="WinUIEx.h">
+      <Filter>WinUIEx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,9 @@
     </Filter>
     <Filter Include="Theory Structures">
       <UniqueIdentifier>{1f4a205c-a1fe-42c4-bba5-6261ac86d2e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinUIEx">
+      <UniqueIdentifier>{9cdd6f28-6122-427a-90f6-59a2e384d022}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

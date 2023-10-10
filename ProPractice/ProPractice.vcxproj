@@ -153,6 +153,7 @@
       <DependentUpon>TitlePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="WinUIEx.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -199,6 +200,7 @@
       <DependentUpon>TitlePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="WinUIEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl">
