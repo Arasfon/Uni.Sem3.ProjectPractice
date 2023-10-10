@@ -11,6 +11,9 @@
     <Page Include="ExamPage.xaml">
       <Filter>Pages</Filter>
     </Page>
+    <Page Include="TitlePage.xaml">
+      <Filter>Pages</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
