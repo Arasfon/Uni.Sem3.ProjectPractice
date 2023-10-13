@@ -20,7 +20,7 @@ namespace winrt::ProPractice::implementation
         void NavView_SelectionChanged(IInspectable const& sender, NavigationViewSelectionChangedEventArgs const& args);
         IAsyncAction OnWebViewWebResourceRequested(CoreWebView2 const& sender, CoreWebView2WebResourceRequestedEventArgs const& e);
         IAsyncAction LoadChapters();
-        IAsyncAction ShowErrorContentDialog(const hstring& title, const hstring& content) const;
+        IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
 
     private:
         IObservableVector<ProPractice::TheoryChapter> _theoryChapters;

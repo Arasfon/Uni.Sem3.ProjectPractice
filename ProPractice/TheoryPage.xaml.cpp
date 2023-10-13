@@ -160,7 +160,8 @@ namespace winrt::ProPractice::implementation
     {
         sqlite3* db;
         int resultCode = sqlite3_open_v2("data.db", &db, SQLITE_OPEN_READONLY, nullptr);
-        if (resultCode != SQLITE_OK) {
+        if (resultCode != SQLITE_OK)
+        {
             std::string s = "Не удалось открыть базу данных: ";
             s += sqlite3_errmsg(db);
             co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
@@ -170,9 +171,10 @@ namespace winrt::ProPractice::implementation
         }
 
         sqlite3_stmt* sqlStatement;
-        const auto sql = "SELECT id, title FROM book_chapters ORDER BY parent_id ASC, id ASC";
+        const auto sql = "SELECT id, title FROM book_chapters ORDER BY parent_id ASC, id ASC;";
         resultCode = sqlite3_prepare_v2(db, sql, -1, &sqlStatement, nullptr);
-        if (resultCode != SQLITE_OK) {
+        if (resultCode != SQLITE_OK)
+        {
             std::string s = "Не удалось подготовить запрос для базы данных: ";
             s += sqlite3_errmsg(db);
             co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
@@ -181,14 +183,17 @@ namespace winrt::ProPractice::implementation
             co_return;
         }
 
-        while ((resultCode = sqlite3_step(sqlStatement)) == SQLITE_ROW) {
+        while ((resultCode = sqlite3_step(sqlStatement)) == SQLITE_ROW)
+        {
             int64_t id = sqlite3_column_int64(sqlStatement, 0);
             const auto* title = static_cast<const wchar_t*>(sqlite3_column_text16(sqlStatement, 1));
 
+            // TODO: Take parent id into consideration here
             _theoryChapters.Append(make<implementation::TheoryChapter>(id, title));
         }
 
-        if (resultCode != SQLITE_DONE) {
+        if (resultCode != SQLITE_DONE)
+        {
             std::string s = "Ошибка базы данных: ";
             s += sqlite3_errmsg(db);
             co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
@@ -200,7 +205,7 @@ namespace winrt::ProPractice::implementation
         NavView().SelectedItem(TheoryChapters().GetAt(0));
     }
 
-    IAsyncAction TheoryPage::ShowErrorContentDialog(const hstring& title, const hstring& content) const
+    IAsyncAction TheoryPage::ShowErrorContentDialog(hstring const& title, hstring const& content) const
     {
         const ContentDialog dialog;
         dialog.XamlRoot(this->XamlRoot());
