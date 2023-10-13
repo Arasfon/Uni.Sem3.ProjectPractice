@@ -1,0 +1,16 @@
+import "ExamControlAction.idl";
+import "ExamQuestion.idl";
+
+namespace ProPractice
+{
+    runtimeclass ExamController
+    {
+        ExamController();
+
+        Int32 CurrentQuestion;
+        Windows.Foundation.Collections.IVector<ExamQuestion> Questions { get; };
+
+        event Windows.Foundation.EventHandler<ExamControlAction> OnControlAction;
+        void CallControl(ExamControlAction action);
+    };
+}

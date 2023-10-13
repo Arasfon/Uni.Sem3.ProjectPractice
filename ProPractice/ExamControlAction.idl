@@ -1,0 +1,9 @@
+namespace ProPractice
+{
+    enum ExamControlAction
+    {
+        Start,
+        Continue,
+        Reset
+    };
+}

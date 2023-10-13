@@ -1,0 +1,8 @@
+namespace ProPractice
+{
+    enum ExamQuestionType
+    {
+        Multiselect,
+        OneOf
+    };
+}

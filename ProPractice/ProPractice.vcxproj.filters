@@ -8,11 +8,20 @@
     <Page Include="TheoryPage.xaml">
       <Filter>Pages</Filter>
     </Page>
-    <Page Include="ExamPage.xaml">
+    <Page Include="ExamControlHostPage.xaml">
       <Filter>Pages</Filter>
     </Page>
     <Page Include="TitlePage.xaml">
       <Filter>Pages</Filter>
+    </Page>
+    <Page Include="ExamStartPage.xaml">
+      <Filter>Pages\Exam</Filter>
+    </Page>
+    <Page Include="ExamQuestionPage.xaml">
+      <Filter>Pages\Exam</Filter>
+    </Page>
+    <Page Include="ExamResultsPage.xaml">
+      <Filter>Pages\Exam</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -20,6 +29,21 @@
     <Midl Include="MainWindow.idl" />
     <Midl Include="TheoryChapter.idl">
       <Filter>Theory Structures</Filter>
+    </Midl>
+    <Midl Include="ExamAnswer.idl">
+      <Filter>Exam Structures</Filter>
+    </Midl>
+    <Midl Include="ExamController.idl">
+      <Filter>Exam Structures</Filter>
+    </Midl>
+    <Midl Include="ExamQuestion.idl">
+      <Filter>Exam Structures</Filter>
+    </Midl>
+    <Midl Include="ExamControlAction.idl">
+      <Filter>Exam Structures</Filter>
+    </Midl>
+    <Midl Include="ExamQuestionType.idl">
+      <Filter>Exam Structures</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +58,15 @@
     <ClCompile Include="WinUIEx.cpp">
       <Filter>WinUIEx</Filter>
     </ClCompile>
+    <ClCompile Include="ExamAnswer.cpp">
+      <Filter>Exam Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamController.cpp">
+      <Filter>Exam Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamQuestion.cpp">
+      <Filter>Exam Structures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -45,6 +78,15 @@
     </ClInclude>
     <ClInclude Include="WinUIEx.h">
       <Filter>WinUIEx</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamAnswer.h">
+      <Filter>Exam Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamController.h">
+      <Filter>Exam Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamQuestion.h">
+      <Filter>Exam Structures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +111,9 @@
     <Image Include="Assets\LockScreenLogo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.ico">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
@@ -85,6 +130,12 @@
     </Filter>
     <Filter Include="WinUIEx">
       <UniqueIdentifier>{9cdd6f28-6122-427a-90f6-59a2e384d022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pages\Exam">
+      <UniqueIdentifier>{2d1e641a-d1b2-485e-9b54-28044a8c5e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam Structures">
+      <UniqueIdentifier>{159081ea-17cd-45cc-a4ed-b3cc9addb721}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

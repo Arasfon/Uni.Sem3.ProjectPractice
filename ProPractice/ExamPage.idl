@@ -1,9 +1,0 @@
-namespace ProPractice
-{
-    [default_interface]
-    runtimeclass ExamPage : Microsoft.UI.Xaml.Controls.Page
-    {
-        ExamPage();
-        Int32 MyProperty;
-    }
-}

@@ -1,0 +1,11 @@
+namespace ProPractice
+{
+    runtimeclass ExamAnswer
+    {
+        ExamAnswer();
+
+        String Text;
+        Boolean IsCorrect;
+        Boolean IsChosen;
+    };
+}

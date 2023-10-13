@@ -28,24 +28,24 @@
                 <ColumnDefinition x:Name="RightDragColumn" Width="*"/>
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="TitleBarIcon" Source="Assets/Square44x44Logo.scale-200.png" Grid.Column="1" Width="16" Height="16" Margin="17,0,0,0"/>
-            <TextBlock x:Name="TitleTextBlock" Text="{x:Bind Title}" Grid.Column="2" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" Margin="16,0,0,0"/>
+            <Image x:Name="TitleBarIcon" Source="Assets/Square44x44Logo.scale-200.ico" Grid.Column="1" Width="16" Height="16" Margin="17,0,0,0"/>
+            <TextBlock x:Name="TitleTextBlock" Text="{x:Bind Title, Mode=OneWay}" Grid.Column="2" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" Margin="16,0,0,0"/>
         </Grid>
 
         <NavigationView x:Name="NavView" Grid.Row="1" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False"
                         SelectionChanged="NavView_SelectionChanged">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Главная" Tag="Title" IsSelected="True">
+                <NavigationViewItem Content="Главная" Tag="Title" IsSelected="True" IsEnabled="{x:Bind AreNavigationMenuItemsEnabled, Mode=OneWay}">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Теория" Tag="Theory">
+                <NavigationViewItem Content="Теория" Tag="Theory" IsEnabled="{x:Bind AreNavigationMenuItemsEnabled, Mode=OneWay}">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE82D;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Проверка знаний" Tag="Exam">
+                <NavigationViewItem Content="Проверка знаний" Tag="ExamControlHost" IsEnabled="{x:Bind AreNavigationMenuItemsEnabled, Mode=OneWay}">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE762;"/>
                     </NavigationViewItem.Icon>
