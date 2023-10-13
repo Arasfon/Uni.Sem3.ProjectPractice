@@ -6,7 +6,10 @@
 #include "WinUIEx.h"
 #include <Microsoft.UI.Xaml.Window.h>
 
-HWND WinUIEx::GetWindowHandle(winrt::Microsoft::UI::Xaml::Window const& window)
+using namespace winrt;
+using namespace winrt::Microsoft::UI::Xaml;
+
+HWND WinUIEx::GetWindowHandle(Window const& window)
 {
     const auto windowNative { window.as<IWindowNative>() };
     HWND hwnd { nullptr };
@@ -14,7 +17,7 @@ HWND WinUIEx::GetWindowHandle(winrt::Microsoft::UI::Xaml::Window const& window)
     return hwnd;
 }
 
-void WinUIEx::CenterOnScreen(winrt::Microsoft::UI::Xaml::Window const& window)
+void WinUIEx::CenterOnScreen(Window const& window)
 {
     const HWND hwnd = GetWindowHandle(window);
     const HMONITOR hwndDesktop = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
@@ -31,5 +34,12 @@ void WinUIEx::CenterOnScreen(winrt::Microsoft::UI::Xaml::Window const& window)
     const long top = cy - (h / 2);
     const bool result = SetWindowPos(hwnd, nullptr, left, top, w, h, 0);
     if (!result)
-        winrt::throw_hresult(HRESULT_FROM_WIN32(GetLastError()));
+        throw_hresult(HRESULT_FROM_WIN32(GetLastError()));
+}
+
+void WinUIEx::SetIcon(Window const& window, hstring const& iconPath)
+{
+    HANDLE image = LoadImage(nullptr, iconPath.c_str(), IMAGE_ICON, 44, 44, LR_LOADFROMFILE);
+    const HWND windowHwnd = GetWindowHandle(window);
+    SendMessage(windowHwnd, WM_SETICON, reinterpret_cast<WPARAM>(nullptr), reinterpret_cast<LPARAM>(image));
 }

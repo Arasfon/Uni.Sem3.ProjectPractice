@@ -9,4 +9,5 @@ class WinUIEx
 public:
     static HWND GetWindowHandle(winrt::Microsoft::UI::Xaml::Window const& window);
     static void CenterOnScreen(winrt::Microsoft::UI::Xaml::Window const& window);
+    static void SetIcon(winrt::Microsoft::UI::Xaml::Window const& window, winrt::hstring const& iconPath);
 };
