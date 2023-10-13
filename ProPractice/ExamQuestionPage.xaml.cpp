@@ -19,7 +19,7 @@ namespace winrt::ProPractice::implementation
     {
         _examController = unbox_value<ExamController>(e.Parameter());
 
-        if (_examController.CurrentQuestion() == _examController.Questions().Size())
+        if (_examController.CurrentQuestion() + 1 == _examController.Questions().Size())
         {
             ContinueExamButton().Content(box_value(L"Завершить тестирование"));
         }
