@@ -58,6 +58,9 @@ namespace winrt::ProPractice::implementation
         }
         catch (hresult_error& err)
         {
+            if (err.code() == E_ABORT)
+                co_return;
+
             webViewInitializedSuccessfully = false;
             webViewInitializationError = to_hstring(err.message());
         }
