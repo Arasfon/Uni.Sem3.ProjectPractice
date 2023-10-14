@@ -82,6 +82,34 @@ namespace winrt::ProPractice::implementation
 
                 break;
             }
+            case ExamQuestionType::FreeInput:
+            {
+                AnswerTypeTextBlock().Text(L"Введите свой ответ:");
+
+                const TextBox textBox;
+
+                textBox.Width(200);
+                textBox.Margin({ 0, 5, 0, 0 });
+                textBox.PlaceholderText(L"Ответ");
+
+                // TODO: Consider LostFocus or similar (for performance reasons)
+                textBox.TextChanged([this](IInspectable const& sender, TextChangedEventArgs const&)
+                    {
+                        const auto tb = unbox_value<TextBox>(sender);
+
+                        for (auto answer : _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers())
+                        {
+                            if (answer.Text() == tb.Text())
+                                answer.IsChosen(true);
+                            else
+                                answer.IsChosen(false);
+                        }
+                    });
+
+                ContentStackPanel().Children().Append(textBox);
+
+                break;
+            }
         }
     }
 }
