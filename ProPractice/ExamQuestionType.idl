@@ -2,7 +2,8 @@ namespace ProPractice
 {
     enum ExamQuestionType
     {
-        Multiselect,
-        OneOf
+        MultipleChoice,
+        SingleChoice,
+        FreeInput
     };
 }

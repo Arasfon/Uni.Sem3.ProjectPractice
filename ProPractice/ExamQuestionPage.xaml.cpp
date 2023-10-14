@@ -30,7 +30,7 @@ namespace winrt::ProPractice::implementation
 
         switch (question.Type())
         {
-            case ExamQuestionType::Multiselect:
+            case ExamQuestionType::MultipleChoice:
             {
                 for (unsigned int i = 0; i < question.Answers().Size(); i++)
                 {
