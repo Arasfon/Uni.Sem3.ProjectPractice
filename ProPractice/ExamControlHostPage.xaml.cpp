@@ -6,7 +6,6 @@
 #endif
 
 #include <sqlite3.h>
-#include <winrt/Microsoft.UI.Xaml.Media.Animation.h>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -44,28 +43,19 @@ namespace winrt::ProPractice::implementation
                 LoadQuestions();
 
                 // ReSharper disable once CppExpressionWithoutSideEffects
-                ContentFrame().Navigate(xaml_typename<ExamQuestionPage>(), _examController);
+                ContentFrame().Navigate(xaml_typename<ExamQuestionHostPage>(), _examController);
                 break;
             }
             case ExamControlAction::Continue:
             {
-                if (_examController.CurrentQuestion() + 1 == _examController.Questions().Size())
-                {
-                    _mainWindow.AreNavigationMenuItemsEnabled(true);
+                if (_examController.CurrentQuestion() + 1 != _examController.Questions().Size())
+                    break;
 
-                    // ReSharper disable once CppExpressionWithoutSideEffects
-                    ContentFrame().Navigate(xaml_typename<ExamResultsPage>(), _examController);
-                }
-                else
-                {
-                    _examController.CurrentQuestion(_examController.CurrentQuestion() + 1);
+                _mainWindow.AreNavigationMenuItemsEnabled(true);
 
-                    const auto transitionInfo = winrt::Microsoft::UI::Xaml::Media::Animation::SlideNavigationTransitionInfo();
-                    transitionInfo.Effect(Media::Animation::SlideNavigationTransitionEffect::FromRight);
-                    // ReSharper disable once CppExpressionWithoutSideEffects
-                    ContentFrame().Navigate(xaml_typename<ExamQuestionPage>(), _examController, transitionInfo);
-                }
-        
+                // ReSharper disable once CppExpressionWithoutSideEffects
+                ContentFrame().Navigate(xaml_typename<ExamResultsPage>(), _examController);
+
                 break;
             }
             case ExamControlAction::Reset:

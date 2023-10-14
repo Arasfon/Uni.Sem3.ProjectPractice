@@ -19,11 +19,6 @@ namespace winrt::ProPractice::implementation
     {
         _examController = unbox_value<ExamController>(e.Parameter());
 
-        if (_examController.CurrentQuestion() + 1 == _examController.Questions().Size())
-        {
-            ContinueExamButton().Content(box_value(L"Завершить тестирование"));
-        }
-
         const auto question = _examController.Questions().GetAt(_examController.CurrentQuestion());
 
         QuestionTextTextBlock().Text(question.Text());
@@ -32,6 +27,8 @@ namespace winrt::ProPractice::implementation
         {
             case ExamQuestionType::MultipleChoice:
             {
+                AnswerTypeTextBlock().Text(L"Выберите несколько вариантов ответа:");
+
                 for (unsigned int i = 0; i < question.Answers().Size(); i++)
                 {
                     auto answer = question.Answers().GetAt(i);
@@ -53,15 +50,7 @@ namespace winrt::ProPractice::implementation
                 break;
             }
         }
-    }
 
-    void ExamQuestionPage::ResetExamButtonClick(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
-    {
-        _examController.CallControl(ExamControlAction::Reset);
-    }
 
-    void ExamQuestionPage::ContinueExamButtonClick(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
-    {
-        _examController.CallControl(ExamControlAction::Continue);
     }
 }

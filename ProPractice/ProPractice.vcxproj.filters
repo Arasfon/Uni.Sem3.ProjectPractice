@@ -23,6 +23,9 @@
     <Page Include="ExamResultsPage.xaml">
       <Filter>Pages\Exam</Filter>
     </Page>
+    <Page Include="ExamQuestionHostPage.xaml">
+      <Filter>Pages\Exam</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
