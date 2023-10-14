@@ -99,7 +99,7 @@ namespace winrt::ProPractice::implementation
         }
 
         sqlite3_stmt* sqlStatement;
-        const auto sql = "SELECT exam_questions.id, question_text, type, exam_answers.id as answer_id, answer_text, is_correct FROM exam_questions INNER JOIN exam_answers ON exam_answers.question_id = exam_questions.id ORDER BY exam_questions.id, exam_answers.id;";
+        const auto sql = "SELECT exam_questions.id as question_id, question_text, type as question_type, answer_text, is_correct as is_answer_correct FROM exam_questions INNER JOIN exam_answers ON exam_answers.question_id = exam_questions.id ORDER BY exam_questions.id, exam_answers.id;";
         resultCode = sqlite3_prepare_v2(db, sql, -1, &sqlStatement, nullptr);
         if (resultCode != SQLITE_OK)
         {
@@ -131,11 +131,9 @@ namespace winrt::ProPractice::implementation
             }
 
             ExamAnswer answer;
-            //int64_t answerId = sqlite3_column_int64(sqlStatement, 3);
-            //answer.Id(answerId);
-            const auto* answerText = static_cast<const wchar_t*>(sqlite3_column_text16(sqlStatement, 4));
+            const auto* answerText = static_cast<const wchar_t*>(sqlite3_column_text16(sqlStatement, 3));
             answer.Text(answerText);
-            const bool answerCorrect = sqlite3_column_int(sqlStatement, 5);
+            const bool answerCorrect = sqlite3_column_int(sqlStatement, 4);
             answer.IsCorrect(answerCorrect);
 
             currentQuestion.Answers().Append(answer);
