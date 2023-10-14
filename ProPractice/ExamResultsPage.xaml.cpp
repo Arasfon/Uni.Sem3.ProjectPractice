@@ -21,7 +21,7 @@ namespace winrt::ProPractice::implementation
         _examController = unbox_value<ExamController>(e.Parameter());
 
         int correctCount = 0;
-        //std::wostringstream resultsText;
+        std::wostringstream resultsText;
 
         for (unsigned int i = 0; i < _examController.Questions().Size(); i++)
         {
@@ -38,11 +38,11 @@ namespace winrt::ProPractice::implementation
                 }
             }
 
-            //resultsText << L"Ответ " << i + 1 << L": " << isCorrect ? L"верный" : L"неверный" << std::endl;
+            resultsText << L"Ответ " << i + 1 << L" — " << (isCorrect ? L"верный" : L"неверный") << std::endl;
             correctCount += isCorrect ? 1 : 0;
         }
 
-        ResultTextBlock().Text(L"Результат: " + std::to_wstring(correctCount) + L"/" + std::to_wstring(_examController.Questions().Size()));
+        ResultTextBlock().Text(resultsText.str() + L"\nРезультат: " + std::to_wstring(correctCount) + L"/" + std::to_wstring(_examController.Questions().Size()));
     }
 
     void ExamResultsPage::ResetExamButtonClick(IInspectable const&, Microsoft::UI::Xaml::RoutedEventArgs const&)
