@@ -2,6 +2,8 @@
 
 #include "ExamControlHostPage.g.h"
 
+#include <random>
+
 namespace winrt::ProPractice::implementation
 {
     struct ExamControlHostPage : ExamControlHostPageT<ExamControlHostPage>
@@ -14,11 +16,17 @@ namespace winrt::ProPractice::implementation
 
         Windows::Foundation::IAsyncAction LoadQuestions();
 
+        template <typename T>
+        void ShuffleVector(Windows::Foundation::Collections::IVector<T> const& vector);
+        template <typename T>
+        void SwapVectorItems(Windows::Foundation::Collections::IVector<T> const& vector, unsigned int firstIndex, unsigned int secondIndex);
+
         [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
 
     private:
         ProPractice::MainWindow _mainWindow = nullptr;
         ProPractice::ExamController _examController = nullptr;
+        inline static std::random_device _randomDevice;
     };
 }
 

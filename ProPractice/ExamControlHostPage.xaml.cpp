@@ -6,6 +6,7 @@
 #endif
 
 #include <sqlite3.h>
+#include <random>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -111,7 +112,10 @@ namespace winrt::ProPractice::implementation
             if (currentId != questionId)
             {
                 if (currentQuestion != nullptr)
+                {
+                    ShuffleVector(currentQuestion.Answers());
                     _examController.Questions().Append(currentQuestion);
+                }
 
                 currentQuestion = ExamQuestion();
                 const auto* questionText = static_cast<const wchar_t*>(sqlite3_column_text16(sqlStatement, 1));
@@ -132,7 +136,12 @@ namespace winrt::ProPractice::implementation
         }
 
         if (currentQuestion != nullptr)
+        {
+            ShuffleVector(currentQuestion.Answers());
             _examController.Questions().Append(currentQuestion);
+        }
+
+        ShuffleVector(_examController.Questions());
 
         if (resultCode != SQLITE_DONE)
         {
@@ -143,6 +152,26 @@ namespace winrt::ProPractice::implementation
 
         sqlite3_finalize(sqlStatement);
         sqlite3_close(db);
+    }
+
+    template <typename T>
+    void ExamControlHostPage::ShuffleVector(Collections::IVector<T> const& vector)
+    {
+        std::mt19937 randomEngine(_randomDevice());
+
+        for (unsigned int i = vector.Size() - 1; i > 0; --i)
+        {
+            std::uniform_int_distribution<> distribution(0, i);
+            SwapVectorItems(vector, i, distribution(randomEngine));
+        }
+    }
+
+    template <typename T>
+    void ExamControlHostPage::SwapVectorItems(Collections::IVector<T> const& vector, unsigned int firstIndex, unsigned int secondIndex)
+    {
+        auto item = vector.GetAt(firstIndex);
+        vector.SetAt(firstIndex, vector.GetAt(secondIndex));
+        vector.SetAt(secondIndex, item);
     }
 
     IAsyncAction ExamControlHostPage::ShowErrorContentDialog(hstring const& title, hstring const& content) const
