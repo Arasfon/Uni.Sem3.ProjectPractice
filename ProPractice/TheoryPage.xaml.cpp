@@ -12,10 +12,12 @@
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Navigation;
+using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::Web::WebView2::Core;
 using namespace Windows::Foundation;
-using namespace Windows::Storage::Streams;
 using namespace Windows::Foundation::Collections;
+using namespace Windows::Storage::Streams;
 
 namespace winrt::ProPractice::implementation
 {
@@ -37,7 +39,7 @@ namespace winrt::ProPractice::implementation
         return _theoryChapters;
     }
 
-    void TheoryPage::OnNavigatedFrom(NavigationEventArgs const& e)
+    void TheoryPage::OnNavigatedFrom(NavigationEventArgs const&)
     {
         ContentWebView().Close();
     }
@@ -93,7 +95,7 @@ namespace winrt::ProPractice::implementation
         co_await LoadChapters();
     }
 
-    void TheoryPage::NavView_SelectionChanged(IInspectable const& sender, NavigationViewSelectionChangedEventArgs const& args)
+    void TheoryPage::NavView_SelectionChanged(IInspectable const&, NavigationViewSelectionChangedEventArgs const&)
     {
         ContentWebView().CoreWebView2().Navigate(L"https://theory.data/");
     }

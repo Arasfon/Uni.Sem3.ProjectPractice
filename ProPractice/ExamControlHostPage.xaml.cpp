@@ -33,7 +33,7 @@ namespace winrt::ProPractice::implementation
         ContentFrame().Navigate(xaml_typename<ExamStartPage>(), _examController);
     }
 
-    void ExamControlHostPage::OnControlAction(IInspectable const& sender, const ExamControlAction action)
+    void ExamControlHostPage::OnControlAction(IInspectable const&, const ExamControlAction action)
     {
         switch (action)
         {

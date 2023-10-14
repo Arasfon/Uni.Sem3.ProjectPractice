@@ -7,7 +7,7 @@ namespace ProPractice
     {
         ExamController();
 
-        Int32 CurrentQuestion;
+        UInt32 CurrentQuestion;
         Windows.Foundation.Collections.IVector<ExamQuestion> Questions { get; };
 
         event Windows.Foundation.EventHandler<ExamControlAction> OnControlAction;

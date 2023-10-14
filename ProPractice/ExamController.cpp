@@ -15,12 +15,12 @@ namespace winrt::ProPractice::implementation
         _questions = single_threaded_vector<ExamQuestion>();
     }
 
-    int32_t ExamController::CurrentQuestion()
+    uint32_t ExamController::CurrentQuestion()
     {
         return _currentQuestion;
     }
 
-    void ExamController::CurrentQuestion(int32_t const& value)
+    void ExamController::CurrentQuestion(uint32_t const& value)
     {
         _currentQuestion = value;
     }

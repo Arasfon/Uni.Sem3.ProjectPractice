@@ -23,7 +23,7 @@ namespace winrt::ProPractice::implementation
         int correctCount = 0;
         //std::wostringstream resultsText;
 
-        for (int i = 0; i < _examController.Questions().Size(); i++)
+        for (unsigned int i = 0; i < _examController.Questions().Size(); i++)
         {
             auto question = _examController.Questions().GetAt(i);
 
@@ -45,7 +45,7 @@ namespace winrt::ProPractice::implementation
         ResultTextBlock().Text(L"Результат: " + std::to_wstring(correctCount) + L"/" + std::to_wstring(_examController.Questions().Size()));
     }
 
-    void ExamResultsPage::ResetExamButtonClick(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+    void ExamResultsPage::ResetExamButtonClick(IInspectable const&, Microsoft::UI::Xaml::RoutedEventArgs const&)
     {
         _examController.CallControl(ExamControlAction::Reset);
     }

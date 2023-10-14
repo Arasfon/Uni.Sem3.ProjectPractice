@@ -2,28 +2,21 @@
 
 #include "TheoryPage.g.h"
 
-using namespace winrt;
-using namespace Microsoft::UI::Xaml::Navigation;
-using namespace Microsoft::UI::Xaml::Controls;
-using namespace Microsoft::Web::WebView2::Core;
-using namespace Windows::Foundation;
-using namespace Windows::Foundation::Collections;
-
 namespace winrt::ProPractice::implementation
 {
     struct TheoryPage : TheoryPageT<TheoryPage>
     {
         TheoryPage();
-        IObservableVector<ProPractice::TheoryChapter> TheoryChapters();
-        void OnNavigatedFrom(NavigationEventArgs const& e);
-        IAsyncAction OnWebViewInitialized(WebView2 const& sender, CoreWebView2InitializedEventArgs const& e);
-        void NavView_SelectionChanged(IInspectable const& sender, NavigationViewSelectionChangedEventArgs const& args);
-        IAsyncAction OnWebViewWebResourceRequested(CoreWebView2 const& sender, CoreWebView2WebResourceRequestedEventArgs const& e);
-        IAsyncAction LoadChapters();
-        IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
+        Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter> TheoryChapters();
+        void OnNavigatedFrom(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
+        Windows::Foundation::IAsyncAction OnWebViewInitialized(Microsoft::UI::Xaml::Controls::WebView2 const& sender, Microsoft::UI::Xaml::Controls::CoreWebView2InitializedEventArgs const& e);
+        void NavView_SelectionChanged(IInspectable const& sender, Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& e);
+        Windows::Foundation::IAsyncAction OnWebViewWebResourceRequested(Microsoft::Web::WebView2::Core::CoreWebView2 const& sender, Microsoft::Web::WebView2::Core::CoreWebView2WebResourceRequestedEventArgs const& e);
+        Windows::Foundation::IAsyncAction LoadChapters();
+        [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
 
     private:
-        IObservableVector<ProPractice::TheoryChapter> _theoryChapters;
+        Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter> _theoryChapters;
     };
 }
 

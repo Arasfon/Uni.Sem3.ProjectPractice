@@ -13,7 +13,8 @@ namespace winrt::ProPractice::implementation
         void OnControlAction(IInspectable const& sender, ExamControlAction action);
 
         Windows::Foundation::IAsyncAction LoadQuestions();
-        Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
+
+        [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
 
     private:
         ProPractice::MainWindow _mainWindow = nullptr;

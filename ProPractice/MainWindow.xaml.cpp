@@ -39,9 +39,9 @@ namespace winrt::ProPractice::implementation
         }
     }
 
-    void MainWindow::NavView_SelectionChanged(IInspectable const& sender, NavigationViewSelectionChangedEventArgs const& args)
+    void MainWindow::NavView_SelectionChanged(IInspectable const&, NavigationViewSelectionChangedEventArgs const& e)
     {
-        const auto selectedItem = unbox_value<IFrameworkElement>(args.SelectedItem());
+        const auto selectedItem = unbox_value<IFrameworkElement>(e.SelectedItem());
         const TypeName pageTypeName { L"ProPractice." + unbox_value<hstring>(selectedItem.Tag()) + L"Page", TypeKind::Metadata };
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(pageTypeName, *this);

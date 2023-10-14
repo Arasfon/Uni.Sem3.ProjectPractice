@@ -8,8 +8,8 @@ namespace winrt::ProPractice::implementation
     {
         ExamController();
 
-        int32_t CurrentQuestion();
-        void CurrentQuestion(int32_t const& value);
+        uint32_t CurrentQuestion();
+        void CurrentQuestion(uint32_t const& value);
 
         winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamQuestion> Questions();
 
@@ -19,7 +19,7 @@ namespace winrt::ProPractice::implementation
         void CallControl(const ExamControlAction action);
 
     private:
-        int32_t _currentQuestion = 0;
+        uint32_t _currentQuestion = 0;
         winrt::Windows::Foundation::Collections::IVector<ExamQuestion> _questions = nullptr;
         winrt::event<winrt::Windows::Foundation::EventHandler<winrt::ProPractice::ExamControlAction>> _onControlActionEvent;
     };

@@ -8,7 +8,7 @@ namespace winrt::ProPractice::implementation
     {
         App();
 
-        void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const&);
+        void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const& e);
 
     private:
         winrt::Microsoft::UI::Xaml::Window _window { nullptr };
