@@ -49,8 +49,39 @@ namespace winrt::ProPractice::implementation
 
                 break;
             }
+            case ExamQuestionType::SingleChoice:
+            {
+                AnswerTypeTextBlock().Text(L"Выберите один из вариантов ответа:");
+
+                const RadioButtons radioButtons;
+
+                for (unsigned int i = 0; i < question.Answers().Size(); i++)
+                {
+                    auto answer = question.Answers().GetAt(i);
+
+                    const RadioButton answerRadioButton;
+
+                    answerRadioButton.Content(box_value(answer.Text()));
+                    answerRadioButton.Tag(box_value(i));
+                    
+                    radioButtons.Items().Append(answerRadioButton);
+                }
+
+                radioButtons.SelectionChanged([this](IInspectable const&, SelectionChangedEventArgs const& e)
+                    {
+                        const auto deselectedItem = unbox_value<RadioButton>(e.RemovedItems().GetAt(0));
+                        const auto selectedItem = unbox_value<RadioButton>(e.AddedItems().GetAt(0));
+
+                        if (deselectedItem != nullptr)
+                            _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers().GetAt(unbox_value<unsigned int>(deselectedItem.Tag())).IsChosen(false);
+                        if (selectedItem != nullptr)
+                            _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers().GetAt(unbox_value<unsigned int>(selectedItem.Tag())).IsChosen(true);
+                    });
+
+                ContentStackPanel().Children().Append(radioButtons);
+
+                break;
+            }
         }
-
-
     }
 }
