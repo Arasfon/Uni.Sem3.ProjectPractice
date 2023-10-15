@@ -7,7 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="МТУСИ"/>
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Spacing="12">
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
+            МИНИСТЕРСТВО ЦИФРОВОГО РАЗВИТИЯ, СВЯЗИ И МАССОВЫХ КОММУНИКАЦИЙ РОССИЙСКОЙ ФЕДЕРАЦИИ
+            <LineBreak/>
+            ордена Трудового Красного Знамени федеральное государственное бюджетное образовательное учреждение высшего образования
+            <LineBreak/>
+            «Московский технический университет связи и информатики»
+            <LineBreak/>
+            Кафедра «Информатика»
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Style="{StaticResource BodyStrongTextBlockStyle}">
+            Проект по дисциплине «Проектный практикум»:
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}">
+            «Волоконно-оптические линни связи: Основы»
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
+            Выполнил: Бояркин Е. В., БЭИ2202
+            <LineBreak/>
+            Проверил: к.п.н., доцент Гуриков С. Р.
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,48,0,0">
+            Чтобы начать изучение темы волоконно-оптических линий связи, Вы можете перейти на <Bold>вкладку "Теория"</Bold>.
+            <LineBreak/>
+            Чтобы проверить свои знания в выше упомянутой теме, Вы можете перейти на <Bold>вкладку "Проверка знаний"</Bold>.
+            <LineBreak/>
+            Успехов!
+        </TextBlock>
     </StackPanel>
 </Page>
