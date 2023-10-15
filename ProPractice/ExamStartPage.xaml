@@ -11,6 +11,7 @@
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="500" TextWrapping="Wrap">
             <Bold>Добро пожаловать в тестирование!</Bold>
             <LineBreak/>
+            <LineBreak/>
             Этот тест рассчитан на 15 минут и состоит из 15 вопросов. Пожалуйста, ознакомьтесь с некоторой важной информацией перед началом:
             <LineBreak/>
             <LineBreak/>
