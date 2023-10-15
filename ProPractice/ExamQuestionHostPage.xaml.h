@@ -10,9 +10,9 @@ namespace winrt::ProPractice::implementation
 
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 
-        void OnControlAction(winrt::Windows::Foundation::IInspectable const& sender, const ExamControlAction action);
+        void OnControlAction(winrt::Windows::Foundation::IInspectable const& sender, ExamControlAction action);
 
-        void UpdateProgressStatuses(const unsigned int currentQuestion);
+        void UpdateProgressStatuses(unsigned int currentQuestion);
         void UpdateRemainingTime();
 
         void TimerTick(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::Foundation::IInspectable const& e);

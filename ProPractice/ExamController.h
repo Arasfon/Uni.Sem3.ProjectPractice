@@ -16,7 +16,7 @@ namespace winrt::ProPractice::implementation
         winrt::event_token OnControlAction(winrt::Windows::Foundation::EventHandler<winrt::ProPractice::ExamControlAction> const& handler);
         void OnControlAction(winrt::event_token const& token) noexcept;
 
-        void CallControl(const ExamControlAction action);
+        void CallControl(ExamControlAction action);
 
     private:
         uint32_t _currentQuestion = 0;
