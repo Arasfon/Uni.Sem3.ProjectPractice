@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Content="Сбросить тестирование и выйти" Click="ResetExamButtonClick"/>
-            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10,0,10,0" MaxWidth="200" VerticalAlignment="Center" Spacing="3">
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="12,0,12,0" MaxWidth="200" VerticalAlignment="Center" Spacing="3">
                 <StackPanel.Transitions>
                     <RepositionThemeTransition/>
                 </StackPanel.Transitions>

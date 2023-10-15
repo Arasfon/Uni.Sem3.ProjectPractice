@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10" Margin="16">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Margin="16">
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="500" TextWrapping="Wrap">
             <Bold>Добро пожаловать в тестирование!</Bold>
             <LineBreak/>

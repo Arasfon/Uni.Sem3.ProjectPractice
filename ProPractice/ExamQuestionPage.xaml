@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical">
-        <TextBlock x:Name="QuestionTextTextBlock" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,10"/>
+        <TextBlock x:Name="QuestionTextTextBlock" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
         <TextBlock x:Name="AnswerTypeTextBlock"/>
         <StackPanel x:Name="ContentStackPanel" Orientation="Vertical" HorizontalAlignment="Left"/>
     </StackPanel>

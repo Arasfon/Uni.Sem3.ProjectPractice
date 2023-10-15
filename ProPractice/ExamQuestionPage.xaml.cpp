@@ -89,7 +89,7 @@ namespace winrt::ProPractice::implementation
                 const TextBox textBox;
 
                 textBox.Width(200);
-                textBox.Margin({ 0, 5, 0, 0 });
+                textBox.Margin({ 0, 8, 0, 0 });
                 textBox.PlaceholderText(L"Ответ");
 
                 // TODO: Consider LostFocus or similar (for performance reasons)
