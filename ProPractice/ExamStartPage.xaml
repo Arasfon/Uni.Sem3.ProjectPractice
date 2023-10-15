@@ -8,7 +8,25 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10" Margin="16">
-        <TextBlock Text="Проверка знаний" HorizontalAlignment="Center"/>
-        <Button Click="StartButton_Click" HorizontalAlignment="Center">Начать</Button>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="500" TextWrapping="Wrap">
+            <Bold>Добро пожаловать в тестирование!</Bold>
+            <LineBreak/>
+            Этот тест рассчитан на 15 минут и состоит из 15 вопросов. Пожалуйста, ознакомьтесь с некоторой важной информацией перед началом:
+            <LineBreak/>
+            <LineBreak/>
+            1. Время ограничено, поэтому старайтесь отвечать на вопросы быстро и точно.
+            <LineBreak/>
+            2. После каждого вопроса нажмите кнопку "Следующий вопрос", чтобы перейти к следующему вопросу. Вы не сможете вернуться к предыдущим вопросам.
+            <LineBreak/>
+            3. Пожалуйста, отвечайте на все вопросы, даже если не уверены в ответе.
+            <LineBreak/>
+            4. Попытайтесь не использовать внешние источники информации, такие как интернет, книги или помощь других людей.
+            <LineBreak/>
+            5. Ваш прогресс будет автоматически сохранен, и вы сможете увидеть свой результат по завершении теста.
+            <LineBreak/>
+            <LineBreak/>
+            Готовы начать? Нажмите "Начать", чтобы начать тест. Удачи!
+        </TextBlock>
+        <Button Click="StartButton_Click" HorizontalAlignment="Center" Style="{StaticResource AccentButtonStyle}">Начать</Button>
     </StackPanel>
 </Page>

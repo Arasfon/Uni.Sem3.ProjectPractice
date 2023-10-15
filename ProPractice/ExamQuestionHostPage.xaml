@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Content="Сбросить тестирование и выйти" Click="ResetExamButtonClick"/>
-            <Button Grid.Column="2" x:Name="ContinueExamButton" Content="Следующий вопрос" Click="ContinueExamButtonClick">
+            <Button Grid.Column="2" x:Name="ContinueExamButton" Content="Следующий вопрос" Style="{StaticResource AccentButtonStyle}" Click="ContinueExamButtonClick">
                 <Button.ContentTransitions>
                     <ContentThemeTransition/>
                 </Button.ContentTransitions>
