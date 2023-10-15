@@ -33,6 +33,7 @@ namespace winrt::ProPractice::implementation
         ContentFrame().Navigate(xaml_typename<ExamStartPage>(), _examController);
     }
 
+    // ReSharper disable CppExpressionWithoutSideEffects
     void ExamControlHostPage::OnControlAction(IInspectable const&, const ExamControlAction action)
     {
         switch (action)
@@ -43,7 +44,6 @@ namespace winrt::ProPractice::implementation
 
                 LoadQuestions();
 
-                // ReSharper disable once CppExpressionWithoutSideEffects
                 ContentFrame().Navigate(xaml_typename<ExamQuestionHostPage>(), _examController);
                 break;
             }
@@ -54,7 +54,6 @@ namespace winrt::ProPractice::implementation
 
                 _mainWindow.AreNavigationMenuItemsEnabled(true);
 
-                // ReSharper disable once CppExpressionWithoutSideEffects
                 ContentFrame().Navigate(xaml_typename<ExamResultsPage>(), _examController);
 
                 break;
@@ -64,16 +63,15 @@ namespace winrt::ProPractice::implementation
                 _mainWindow.AreNavigationMenuItemsEnabled(true);
         
                 _examController = ExamController();
-                // ReSharper disable once CppExpressionWithoutSideEffects
                 _examController.OnControlAction({ this, &ExamControlHostPage::OnControlAction });
         
-                // ReSharper disable once CppExpressionWithoutSideEffects
                 ContentFrame().Navigate(xaml_typename<ExamStartPage>(), _examController);
         
                 break;
             }
         }
     }
+    // ReSharper restore CppExpressionWithoutSideEffects
 
     IAsyncAction ExamControlHostPage::LoadQuestions()
     {
