@@ -92,8 +92,7 @@ namespace winrt::ProPractice::implementation
                 textBox.Margin({ 0, 8, 0, 0 });
                 textBox.PlaceholderText(L"Ответ");
 
-                // TODO: Consider LostFocus or similar (for performance reasons)
-                textBox.TextChanged([this](IInspectable const& sender, TextChangedEventArgs const&)
+                textBox.LostFocus([this](IInspectable const& sender, RoutedEventArgs const&)
                     {
                         const auto tb = unbox_value<TextBox>(sender);
 
