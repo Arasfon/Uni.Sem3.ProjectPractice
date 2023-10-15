@@ -12,6 +12,8 @@ namespace winrt::ProPractice::implementation
 
         void OnControlAction(winrt::Windows::Foundation::IInspectable const& sender, const ExamControlAction action);
 
+        void UpdateProgressStatuses(unsigned int currentQuestion);
+
         void ResetExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e);
         void ContinueExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e);
 

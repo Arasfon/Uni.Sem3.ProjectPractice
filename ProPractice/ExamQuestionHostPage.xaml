@@ -23,6 +23,15 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Content="Сбросить тестирование и выйти" Click="ResetExamButtonClick"/>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10,0,10,0" MaxWidth="200" VerticalAlignment="Center" Spacing="3">
+                <StackPanel.Transitions>
+                    <RepositionThemeTransition/>
+                </StackPanel.Transitions>
+
+                <TextBlock x:Name="ExamProgressTextBlock" Text="Выполнено -/-" HorizontalAlignment="Center"/>
+                <ProgressBar x:Name="ExamProgressBar"/>
+                <TextBlock x:Name="RemainingTimeTextBlock" Text="Осталось -:-" HorizontalAlignment="Center"/>
+            </StackPanel>
             <Button Grid.Column="2" x:Name="ContinueExamButton" Content="Следующий вопрос" Style="{StaticResource AccentButtonStyle}" Click="ContinueExamButtonClick">
                 <Button.ContentTransitions>
                     <ContentThemeTransition/>

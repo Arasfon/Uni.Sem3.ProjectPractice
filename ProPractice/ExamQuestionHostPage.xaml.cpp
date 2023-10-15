@@ -25,6 +25,9 @@ namespace winrt::ProPractice::implementation
         // ReSharper disable once CppExpressionWithoutSideEffects
         _examController.OnControlAction({ this, &ExamQuestionHostPage::OnControlAction });
 
+        ExamProgressBar().Maximum(_examController.Questions().Size());
+        UpdateProgressStatuses(0);
+
         const auto transitionInfo = SlideNavigationTransitionInfo();
         transitionInfo.Effect(SlideNavigationTransitionEffect::FromRight);
         // ReSharper disable once CppExpressionWithoutSideEffects
@@ -33,7 +36,12 @@ namespace winrt::ProPractice::implementation
 
     void ExamQuestionHostPage::OnControlAction(IInspectable const&, const ExamControlAction action)
     {
-        if (action != ExamControlAction::Continue || _examController.CurrentQuestion() + 1 == _examController.Questions().Size())
+        if (action != ExamControlAction::Continue)
+            return;
+
+        UpdateProgressStatuses(_examController.CurrentQuestion() + 1);
+
+        if (_examController.CurrentQuestion() + 1 == _examController.Questions().Size())
             return;
 
         _examController.CurrentQuestion(_examController.CurrentQuestion() + 1);
@@ -45,6 +53,15 @@ namespace winrt::ProPractice::implementation
         transitionInfo.Effect(SlideNavigationTransitionEffect::FromRight);
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(xaml_typename<ExamQuestionPage>(), _examController, transitionInfo);
+    }
+
+    void ExamQuestionHostPage::UpdateProgressStatuses(unsigned int currentQuestion)
+    {
+        ExamProgressBar().Value(currentQuestion);
+
+        std::wostringstream stringStream;
+        stringStream << L"Выполнено " << currentQuestion << L"/" << _examController.Questions().Size();
+        ExamProgressTextBlock().Text(stringStream.str());
     }
 
     void ExamQuestionHostPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&)
