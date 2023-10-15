@@ -10,6 +10,7 @@ using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Navigation;
 using namespace Microsoft::UI::Xaml::Media::Animation;
+using namespace Windows::Foundation;
 
 namespace winrt::ProPractice::implementation
 {
@@ -28,6 +29,14 @@ namespace winrt::ProPractice::implementation
         ExamProgressBar().Maximum(_examController.Questions().Size());
         UpdateProgressStatuses(0);
 
+        _remainingTime = std::chrono::minutes { _examController.Questions().Size() };
+        _remainingTime -= std::chrono::seconds { 1 }; // Because timer does not fire Tick event when started
+        UpdateRemainingTime();
+        _timer.Interval(TimeSpan { std::chrono::seconds { 1 } });
+        // ReSharper disable once CppExpressionWithoutSideEffects
+        _timer.Tick({ this, &ExamQuestionHostPage::TimerTick });
+        _timer.Start();
+
         const auto transitionInfo = SlideNavigationTransitionInfo();
         transitionInfo.Effect(SlideNavigationTransitionEffect::FromRight);
         // ReSharper disable once CppExpressionWithoutSideEffects
@@ -42,7 +51,10 @@ namespace winrt::ProPractice::implementation
         UpdateProgressStatuses(_examController.CurrentQuestion() + 1);
 
         if (_examController.CurrentQuestion() + 1 == _examController.Questions().Size())
+        {
+            _timer.Stop();
             return;
+        }
 
         _examController.CurrentQuestion(_examController.CurrentQuestion() + 1);
 
@@ -64,8 +76,33 @@ namespace winrt::ProPractice::implementation
         ExamProgressTextBlock().Text(stringStream.str());
     }
 
+    void ExamQuestionHostPage::UpdateRemainingTime()
+    {
+        std::wostringstream stringStream;
+        stringStream << L"Осталось " <<
+            std::format(L"{:02}", std::chrono::duration_cast<std::chrono::minutes>(_remainingTime).count()) <<
+            L":" <<
+            std::format(L"{:02}", (_remainingTime % 60).count());
+        RemainingTimeTextBlock().Text(stringStream.str());
+    }
+
+    void ExamQuestionHostPage::TimerTick(IInspectable const&, IInspectable const&)
+    {
+        if (_remainingTime.count() == 0)
+        {
+            _timer.Stop();
+            _examController.CurrentQuestion(_examController.Questions().Size() - 1);
+            _examController.CallControl(ExamControlAction::Continue);
+            return;
+        }
+
+        _remainingTime -= std::chrono::seconds{ 1 };
+        UpdateRemainingTime();
+    }
+
     void ExamQuestionHostPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&)
     {
+        _timer.Stop();
         _examController.CallControl(ExamControlAction::Reset);
     }
 
