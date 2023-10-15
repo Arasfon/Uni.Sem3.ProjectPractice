@@ -8,6 +8,8 @@
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Navigation;
+using namespace Microsoft::UI::Xaml::Media::Animation;
 
 namespace winrt::ProPractice::implementation
 {
@@ -16,15 +18,15 @@ namespace winrt::ProPractice::implementation
         InitializeComponent();
     }
 
-    void ExamQuestionHostPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+    void ExamQuestionHostPage::OnNavigatedTo(NavigationEventArgs const& e)
     {
         _examController = unbox_value<ExamController>(e.Parameter());
 
         // ReSharper disable once CppExpressionWithoutSideEffects
         _examController.OnControlAction({ this, &ExamQuestionHostPage::OnControlAction });
 
-        const auto transitionInfo = winrt::Microsoft::UI::Xaml::Media::Animation::SlideNavigationTransitionInfo();
-        transitionInfo.Effect(Media::Animation::SlideNavigationTransitionEffect::FromRight);
+        const auto transitionInfo = SlideNavigationTransitionInfo();
+        transitionInfo.Effect(SlideNavigationTransitionEffect::FromRight);
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(xaml_typename<ExamQuestionPage>(), _examController, transitionInfo);
     }
@@ -39,18 +41,18 @@ namespace winrt::ProPractice::implementation
         if (_examController.CurrentQuestion() + 1 == _examController.Questions().Size())
             ContinueExamButton().Content(box_value(L"Завершить тестирование"));
 
-        const auto transitionInfo = winrt::Microsoft::UI::Xaml::Media::Animation::SlideNavigationTransitionInfo();
-        transitionInfo.Effect(Media::Animation::SlideNavigationTransitionEffect::FromRight);
+        const auto transitionInfo = SlideNavigationTransitionInfo();
+        transitionInfo.Effect(SlideNavigationTransitionEffect::FromRight);
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(xaml_typename<ExamQuestionPage>(), _examController, transitionInfo);
     }
 
-    void ExamQuestionHostPage::ResetExamButtonClick(IInspectable const&, Microsoft::UI::Xaml::RoutedEventArgs const&)
+    void ExamQuestionHostPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&)
     {
         _examController.CallControl(ExamControlAction::Reset);
     }
 
-    void ExamQuestionHostPage::ContinueExamButtonClick(IInspectable const&, Microsoft::UI::Xaml::RoutedEventArgs const&)
+    void ExamQuestionHostPage::ContinueExamButtonClick(IInspectable const&, RoutedEventArgs const&)
     {
         _examController.CallControl(ExamControlAction::Continue);
     }
