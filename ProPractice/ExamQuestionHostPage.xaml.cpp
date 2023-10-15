@@ -55,7 +55,7 @@ namespace winrt::ProPractice::implementation
         ContentFrame().Navigate(xaml_typename<ExamQuestionPage>(), _examController, transitionInfo);
     }
 
-    void ExamQuestionHostPage::UpdateProgressStatuses(unsigned int currentQuestion)
+    void ExamQuestionHostPage::UpdateProgressStatuses(const unsigned int currentQuestion)
     {
         ExamProgressBar().Value(currentQuestion);
 
