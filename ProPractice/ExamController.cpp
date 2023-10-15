@@ -22,7 +22,7 @@ namespace winrt::ProPractice::implementation
 
     void ExamController::CurrentQuestion(uint32_t const& value)
     {
-        _currentQuestion = value;
+        _currentQuestion = std::clamp(value, 0u, Questions().Size() - 1);
     }
 
     IVector<ExamQuestion> ExamController::Questions()
