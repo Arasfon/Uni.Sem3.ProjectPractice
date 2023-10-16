@@ -7,11 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
-        <TextBlock HorizontalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}">
             Тестирование окончено.
         </TextBlock>
-        <TextBlock x:Name="ResultTextBlock" Text="Результат" HorizontalAlignment="Center" TextAlignment="Center"/>
-        <Button Content="Начать заново" Margin="0,12,0,0" HorizontalAlignment="Center" Click="ResetExamButtonClick"/>
-    </StackPanel>
+        <TextBlock Grid.Row="1" x:Name="ResultTextBlock" Text="Результат: -/-" HorizontalAlignment="Center" Margin="0,12,0,0" Style="{StaticResource SubtitleTextBlockStyle}"/>
+        <GridView Grid.Row="2" x:Name="ResultsGridView" SelectionMode="None" Margin="0,12,0,0"/>
+        <Button Grid.Row="3" Content="Начать заново" Margin="0,12,0,0" HorizontalAlignment="Center" Click="ResetExamButtonClick"/>
+    </Grid>
 </Page>
