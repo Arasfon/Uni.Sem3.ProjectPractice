@@ -16,7 +16,7 @@ namespace winrt::ProPractice::implementation
         winrt::Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
 
     private:
-        const hstring _dataCurrentVersionUri = L"https://functions.yandexcloud.net/your-function-here";
+        inline static const std::wstring DataCurrentVersionUri = L"https://functions.yandexcloud.net/your-function-here";
         ProPractice::MainWindow _mainWindow = nullptr;
         inline static bool _dataChecked = false;
     };

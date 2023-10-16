@@ -41,7 +41,7 @@ namespace winrt::ProPractice::implementation
 
         _mainWindow.AreNavigationMenuItemsEnabled(false);
 
-        Uri uri { _dataCurrentVersionUri };
+        Uri uri { DataCurrentVersionUri };
         const HttpClient httpClient;
 
         hstring versionDataRaw;
