@@ -40,7 +40,7 @@ namespace winrt::ProPractice::implementation
 
     void TheoryPage::OnNavigatedTo(NavigationEventArgs const& e)
     {
-        MainWindow mainWindow = unbox_value<MainWindow>(e.Parameter());
+        const MainWindow mainWindow = unbox_value<MainWindow>(e.Parameter());
 
         InfoBar().IsOpen(!mainWindow.IsDataCurrent());
     }
@@ -59,12 +59,12 @@ namespace winrt::ProPractice::implementation
         {
             check_hresult(e.Exception());
         }
-        catch (std::exception& ex)
+        catch (std::exception const& ex)
         {
             webViewInitializedSuccessfully = false;
             webViewInitializationError = to_hstring(ex.what());
         }
-        catch (hresult_error& err)
+        catch (hresult_error const& err)
         {
             if (err.code() == E_ABORT)
                 co_return;
@@ -177,7 +177,7 @@ namespace winrt::ProPractice::implementation
             s += sqlite3_errmsg(db);
             co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
-            Application::Current().Exit();
+            //Application::Current().Exit();
             co_return;
         }
 
@@ -190,7 +190,7 @@ namespace winrt::ProPractice::implementation
             s += sqlite3_errmsg(db);
             co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
-            Application::Current().Exit();
+            //Application::Current().Exit();
             co_return;
         }
 

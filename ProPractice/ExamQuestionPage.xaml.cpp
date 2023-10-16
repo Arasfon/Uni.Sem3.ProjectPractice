@@ -4,13 +4,13 @@
 #include "ExamQuestionPage.g.cpp"
 #endif
 
+#include <winrt/Microsoft.UI.Xaml.Input.h>
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Input;
 using namespace Windows::System;
-
-#include <winrt/Microsoft.UI.Xaml.Input.h>
 
 namespace winrt::ProPractice::implementation
 {
