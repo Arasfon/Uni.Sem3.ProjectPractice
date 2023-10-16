@@ -153,16 +153,4 @@ namespace winrt::ProPractice::implementation
 
         return version;
     }
-
-    IAsyncAction TitlePage::ShowErrorContentDialog(hstring const& title, hstring const& content) const
-    {
-        const Controls::ContentDialog dialog;
-        dialog.XamlRoot(this->XamlRoot());
-        dialog.Style(unbox_value<Microsoft::UI::Xaml::Style>(Application::Current().Resources().Lookup(box_value(L"DefaultContentDialogStyle"))));
-        dialog.Title(box_value(title));
-        dialog.Content(box_value(content));
-        dialog.CloseButtonText(L"Ок");
-
-        co_await dialog.ShowAsync();
-    }
 }

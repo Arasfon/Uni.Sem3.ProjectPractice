@@ -13,8 +13,6 @@ namespace winrt::ProPractice::implementation
         winrt::fire_and_forget CheckData();
         int64_t GetDataVersion();
 
-        winrt::Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
-
     private:
         inline static const std::wstring DataCurrentVersionUri = L"https://functions.yandexcloud.net/your-function-here";
         ProPractice::MainWindow _mainWindow = nullptr;
