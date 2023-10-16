@@ -39,6 +39,20 @@ namespace winrt::ProPractice::implementation
         }
     }
 
+    bool MainWindow::IsDataCurrent()
+    {
+        return _isDataCurrent;
+    }
+
+    void MainWindow::IsDataCurrent(bool value)
+    {
+        if (_isDataCurrent != value)
+        {
+            _isDataCurrent = value;
+            _propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDataCurrent" });
+        }
+    }
+
     void MainWindow::NavView_SelectionChanged(IInspectable const&, NavigationViewSelectionChangedEventArgs const& e)
     {
         const auto selectedItem = unbox_value<IFrameworkElement>(e.SelectedItem());

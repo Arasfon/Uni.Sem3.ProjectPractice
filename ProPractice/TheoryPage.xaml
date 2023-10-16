@@ -26,7 +26,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <InfoBar x:Name="InfoBar" Grid.Row="0" Title="Предупреждение" Message="Мы не смогли подключиться к базе данных на удалённом сервере. Не волнуйтесь, мы используем самые последние данные, имеющиеся у нас локально." IsOpen="True" Severity="Warning" />
+                <InfoBar x:Name="InfoBar" Grid.Row="0" Title="Предупреждение" Message="Мы не смогли подключиться к базе данных на удалённом сервере. Не волнуйтесь, мы используем самые последние данные, имеющиеся у нас локально." Severity="Warning" />
                 <WebView2 Grid.Row="1" x:Name="ContentWebView"/>
             </Grid>
         </NavigationView>

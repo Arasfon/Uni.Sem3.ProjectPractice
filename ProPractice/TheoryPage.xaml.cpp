@@ -38,6 +38,13 @@ namespace winrt::ProPractice::implementation
         return _theoryChapters;
     }
 
+    void TheoryPage::OnNavigatedTo(NavigationEventArgs const& e)
+    {
+        MainWindow mainWindow = unbox_value<MainWindow>(e.Parameter());
+
+        InfoBar().IsOpen(!mainWindow.IsDataCurrent());
+    }
+
     void TheoryPage::OnNavigatedFrom(NavigationEventArgs const&)
     {
         ContentWebView().Close();

@@ -29,6 +29,8 @@ namespace winrt::ProPractice::implementation
     {
         _mainWindow = unbox_value<MainWindow>(e.Parameter());
 
+        InfoBar().IsOpen(!_mainWindow.IsDataCurrent());
+
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(xaml_typename<ExamStartPage>(), _examController);
     }
