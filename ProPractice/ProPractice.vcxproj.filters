@@ -53,7 +53,7 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="sqlite3.c">
-      <Filter>SQLite</Filter>
+      <Filter>External Libraries\SQLite</Filter>
     </ClCompile>
     <ClCompile Include="TheoryChapter.cpp">
       <Filter>Theory Structures</Filter>
@@ -74,7 +74,7 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="sqlite3.h">
-      <Filter>SQLite</Filter>
+      <Filter>External Libraries\SQLite</Filter>
     </ClInclude>
     <ClInclude Include="TheoryChapter.h">
       <Filter>Theory Structures</Filter>
@@ -125,9 +125,6 @@
     <Filter Include="Pages">
       <UniqueIdentifier>{1d4be319-da60-4a52-a500-0903696070b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SQLite">
-      <UniqueIdentifier>{f543e8d8-4fe5-4cf2-99e7-228a1b22bcc4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Theory Structures">
       <UniqueIdentifier>{1f4a205c-a1fe-42c4-bba5-6261ac86d2e9}</UniqueIdentifier>
     </Filter>
@@ -139,6 +136,12 @@
     </Filter>
     <Filter Include="Exam Structures">
       <UniqueIdentifier>{159081ea-17cd-45cc-a4ed-b3cc9addb721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libraries">
+      <UniqueIdentifier>{81bd7ac7-c498-4f22-a220-999862689b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libraries\SQLite">
+      <UniqueIdentifier>{f543e8d8-4fe5-4cf2-99e7-228a1b22bcc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
