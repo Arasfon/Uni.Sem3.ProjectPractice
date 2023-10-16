@@ -98,7 +98,11 @@ namespace winrt::ProPractice::implementation
 
                         for (auto answer : _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers())
                         {
-                            if (answer.Text() == tb.Text())
+                            const auto answerText = answer.Text().c_str();
+                            const auto userText = tb.Text().c_str();
+
+                            // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
+                            if (CSTR_EQUAL == CompareStringEx(LOCALE_NAME_USER_DEFAULT, LINGUISTIC_IGNORECASE, answerText, -1, userText, -1, nullptr, nullptr, 0))
                                 answer.IsChosen(true);
                             else
                                 answer.IsChosen(false);
