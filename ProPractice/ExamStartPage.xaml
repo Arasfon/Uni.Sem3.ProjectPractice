@@ -7,14 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Margin="16">
-        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="500" TextWrapping="Wrap" Style="{StaticResource SubtitleTextBlockStyle}">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Margin="16" MaxWidth="500">
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Style="{StaticResource SubtitleTextBlockStyle}">
             Добро пожаловать в тестирование!
         </TextBlock>
-        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="500" TextWrapping="Wrap">
-            Этот тест рассчитан на 15 минут и состоит из 15 вопросов. Пожалуйста, ознакомьтесь с некоторой важной информацией перед началом:
-            <LineBreak/>
-            <LineBreak/>
+        <TextBlock x:Name="ExamRulesTitleTextBlock" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
+            Этот тест рассчитан на {0} минут(у/ы) и состоит из {0} вопросов(-а). Пожалуйста, ознакомьтесь с некоторой важной информацией перед началом:
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
             1. Время ограничено, поэтому старайтесь отвечать на вопросы быстро и точно.
             <LineBreak/>
             2. После каждого вопроса нажмите кнопку "Следующий вопрос", чтобы перейти к следующему вопросу. Вы не сможете вернуться к предыдущим вопросам.
@@ -24,8 +24,8 @@
             4. Попытайтесь не использовать внешние источники информации, такие как интернет, книги или помощь других людей.
             <LineBreak/>
             5. Ваш прогресс будет автоматически сохранен, и вы сможете увидеть свой результат по завершении теста.
-            <LineBreak/>
-            <LineBreak/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
             Готовы начать? Нажмите "Начать", чтобы начать тест. Удачи!
         </TextBlock>
         <Button Click="StartButton_Click" HorizontalAlignment="Center" Style="{StaticResource AccentButtonStyle}">Начать</Button>

@@ -8,9 +8,13 @@ namespace winrt::ProPractice::implementation
     {
         ExamStartPage();
 
-        void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
+        Windows::Foundation::IAsyncAction OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
+
+        Windows::Foundation::IAsyncOperation<int64_t> GetQuestionCount() const;
 
         void StartButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e);
+
+        [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
 
     private:
         ProPractice::ExamController _examController;
