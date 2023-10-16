@@ -21,8 +21,6 @@ namespace winrt::ProPractice::implementation
         template <typename T>
         void SwapVectorItems(Windows::Foundation::Collections::IVector<T> const& vector, unsigned int firstIndex, unsigned int secondIndex);
 
-        [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
-
     private:
         ProPractice::MainWindow _mainWindow = nullptr;
         ProPractice::ExamController _examController = nullptr;

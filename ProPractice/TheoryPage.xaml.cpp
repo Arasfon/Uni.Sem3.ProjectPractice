@@ -8,6 +8,7 @@
 #include <winrt/Microsoft.Web.WebView2.Core.h>
 #include <winrt/Windows.Storage.Streams.h>
 #include "sqlite3.h"
+#include "WinUIEx.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -75,7 +76,7 @@ namespace winrt::ProPractice::implementation
 
         if (!webViewInitializedSuccessfully)
         {
-            co_await ShowErrorContentDialog(L"Ошибка инициализации WebView2", L"Не удалось запустить WebView2: " + webViewInitializationError);
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка инициализации WebView2", L"Не удалось запустить WebView2: " + webViewInitializationError);
             Application::Current().Exit();
             co_return;
         }
@@ -123,7 +124,7 @@ namespace winrt::ProPractice::implementation
         if (resultCode != SQLITE_OK) {
             std::string s = "Не удалось открыть базу данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
             //Application::Current().Exit();
             e.Response(ContentWebView().CoreWebView2().Environment().CreateWebResourceResponse(nullptr, 502, L"Bad Gateway", L""));
@@ -138,7 +139,7 @@ namespace winrt::ProPractice::implementation
         if (resultCode != SQLITE_OK) {
             std::string s = "Не удалось подготовить запрос для базы данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
             //Application::Current().Exit();
             e.Response(ContentWebView().CoreWebView2().Environment().CreateWebResourceResponse(nullptr, 502, L"Bad Gateway", L""));
@@ -156,7 +157,7 @@ namespace winrt::ProPractice::implementation
         if (resultCode != SQLITE_DONE) {
             std::string s = "Ошибка базы данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
         }
 
         sqlite3_finalize(sqlStatement);
@@ -175,7 +176,7 @@ namespace winrt::ProPractice::implementation
         {
             std::string s = "Не удалось открыть базу данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
             //Application::Current().Exit();
             co_return;
@@ -188,7 +189,7 @@ namespace winrt::ProPractice::implementation
         {
             std::string s = "Не удалось подготовить запрос для базы данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
             //Application::Current().Exit();
             co_return;
@@ -225,24 +226,12 @@ namespace winrt::ProPractice::implementation
         {
             std::string s = "Ошибка базы данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
         }
 
         sqlite3_finalize(sqlStatement);
         sqlite3_close(db);
 
         NavView().SelectedItem(TheoryChapters().GetAt(0));
-    }
-
-    IAsyncAction TheoryPage::ShowErrorContentDialog(hstring const& title, hstring const& content) const
-    {
-        const ContentDialog dialog;
-        dialog.XamlRoot(this->XamlRoot());
-        dialog.Style(unbox_value<Microsoft::UI::Xaml::Style>(Application::Current().Resources().Lookup(box_value(L"DefaultContentDialogStyle"))));
-        dialog.Title(box_value(title));
-        dialog.Content(box_value(content));
-        dialog.CloseButtonText(L"Ок");
-
-        co_await dialog.ShowAsync();
     }
 }

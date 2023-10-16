@@ -19,8 +19,6 @@ namespace winrt::ProPractice::implementation
 
         Windows::Foundation::IAsyncAction LoadChapters();
 
-        [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
-
     private:
         Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter> _theoryChapters;
         std::unordered_map<int64_t, std::vector<unsigned int>> _chapterPaths;

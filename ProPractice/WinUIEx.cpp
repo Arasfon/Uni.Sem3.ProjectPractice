@@ -7,7 +7,8 @@
 #include <Microsoft.UI.Xaml.Window.h>
 
 using namespace winrt;
-using namespace winrt::Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml;
+using namespace Windows::Foundation;
 
 HWND WinUIEx::GetWindowHandle(Window const& window)
 {
@@ -42,4 +43,16 @@ void WinUIEx::SetIcon(Window const& window, hstring const& iconPath)
     HANDLE image = LoadImage(nullptr, iconPath.c_str(), IMAGE_ICON, 44, 44, LR_LOADFROMFILE);
     const HWND windowHwnd = GetWindowHandle(window);
     SendMessage(windowHwnd, WM_SETICON, reinterpret_cast<WPARAM>(nullptr), reinterpret_cast<LPARAM>(image));
+}
+
+IAsyncAction WinUIEx::ShowSimpleContentDialog(UIElement const& uiElement, hstring const& title, hstring const& content)
+{
+    const Controls::ContentDialog dialog;
+    dialog.XamlRoot(uiElement.XamlRoot());
+    dialog.Style(unbox_value<Style>(Application::Current().Resources().Lookup(box_value(L"DefaultContentDialogStyle"))));
+    dialog.Title(box_value(title));
+    dialog.Content(box_value(content));
+    dialog.CloseButtonText(L"Ок");
+
+    co_await dialog.ShowAsync();
 }

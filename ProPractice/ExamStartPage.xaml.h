@@ -14,8 +14,6 @@ namespace winrt::ProPractice::implementation
 
         void StartButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e);
 
-        [[nodiscard]] Windows::Foundation::IAsyncAction ShowErrorContentDialog(hstring const& title, hstring const& content) const;
-
     private:
         ProPractice::ExamController _examController;
     };

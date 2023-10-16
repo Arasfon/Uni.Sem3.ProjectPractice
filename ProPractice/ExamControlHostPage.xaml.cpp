@@ -7,6 +7,7 @@
 
 #include <sqlite3.h>
 #include <random>
+#include "WinUIEx.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -83,7 +84,7 @@ namespace winrt::ProPractice::implementation
         {
             std::string s = "Не удалось открыть базу данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
             Application::Current().Exit();
             co_return;
@@ -96,7 +97,7 @@ namespace winrt::ProPractice::implementation
         {
             std::string s = "Не удалось подготовить запрос для базы данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
             sqlite3_close(db);
             Application::Current().Exit();
             co_return;
@@ -147,7 +148,7 @@ namespace winrt::ProPractice::implementation
         {
             std::string s = "Ошибка базы данных: ";
             s += sqlite3_errmsg(db);
-            co_await ShowErrorContentDialog(L"Ошибка базы данных", to_hstring(s));
+            co_await WinUIEx::ShowSimpleContentDialog(*this, L"Ошибка базы данных", to_hstring(s));
         }
 
         sqlite3_finalize(sqlStatement);
@@ -172,17 +173,5 @@ namespace winrt::ProPractice::implementation
         auto item = vector.GetAt(firstIndex);
         vector.SetAt(firstIndex, vector.GetAt(secondIndex));
         vector.SetAt(secondIndex, item);
-    }
-
-    IAsyncAction ExamControlHostPage::ShowErrorContentDialog(hstring const& title, hstring const& content) const
-    {
-        const Controls::ContentDialog dialog;
-        dialog.XamlRoot(this->XamlRoot());
-        dialog.Style(unbox_value<Microsoft::UI::Xaml::Style>(Application::Current().Resources().Lookup(box_value(L"DefaultContentDialogStyle"))));
-        dialog.Title(box_value(title));
-        dialog.Content(box_value(content));
-        dialog.CloseButtonText(L"Ок");
-
-        co_await dialog.ShowAsync();
     }
 }
