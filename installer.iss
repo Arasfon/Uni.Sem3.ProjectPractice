@@ -35,7 +35,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "ProPractice\bin\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "ProPractice\bin\Release\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.xbf,*.pdb,*.exp"
+Source: "ProPractice\bin\Release\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.xbf,*.pdb,*.lib,*.exp"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
