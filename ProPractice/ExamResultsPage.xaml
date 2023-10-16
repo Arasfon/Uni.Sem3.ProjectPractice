@@ -8,8 +8,8 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
-        <TextBlock HorizontalAlignment="Center">
-            <Bold>Тестирование окончено.</Bold>
+        <TextBlock HorizontalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}">
+            Тестирование окончено.
         </TextBlock>
         <TextBlock x:Name="ResultTextBlock" Text="Результат" HorizontalAlignment="Center" TextAlignment="Center"/>
         <Button Content="Начать заново" Margin="0,12,0,0" HorizontalAlignment="Center" Click="ResetExamButtonClick"/>
