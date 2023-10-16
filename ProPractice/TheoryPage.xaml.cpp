@@ -4,7 +4,6 @@
 #if __has_include("TheoryPage.g.cpp")
 #include "TheoryPage.g.cpp"
 #endif
-#include "TheoryChapter.h"
 
 #include <winrt/Microsoft.Web.WebView2.Core.h>
 #include <winrt/Windows.Storage.Streams.h>
@@ -176,7 +175,7 @@ namespace winrt::ProPractice::implementation
         }
 
         sqlite3_stmt* sqlStatement;
-        const auto sql = "SELECT id, title FROM book_chapters ORDER BY parent_id ASC, id ASC;";
+        const auto sql = "SELECT id, title, parent_id FROM book_chapters ORDER BY parent_id ASC, id ASC;";
         resultCode = sqlite3_prepare_v2(db, sql, -1, &sqlStatement, nullptr);
         if (resultCode != SQLITE_OK)
         {
@@ -193,8 +192,26 @@ namespace winrt::ProPractice::implementation
             int64_t id = sqlite3_column_int64(sqlStatement, 0);
             const auto* title = static_cast<const wchar_t*>(sqlite3_column_text16(sqlStatement, 1));
 
-            // TODO: Take parent id into consideration here
-            _theoryChapters.Append(make<implementation::TheoryChapter>(id, title));
+            if (sqlite3_column_type(sqlStatement, 2) == SQLITE_NULL)
+            {
+                _chapterPaths[id] = { _theoryChapters.Size() };
+                _theoryChapters.Append(TheoryChapter(id, title));
+            }
+            else
+            {
+                int64_t parentId = sqlite3_column_int64(sqlStatement, 2);
+
+                auto parentPath = _chapterPaths[parentId];
+
+                TheoryChapter parent = _theoryChapters.GetAt(parentPath[0]);
+                for (unsigned int i = 1; i < parentPath.size(); ++i)
+                {
+                    parent = parent.Children().GetAt(parentPath[i]);
+                }
+                _chapterPaths[id] = parentPath;
+                _chapterPaths[id].push_back(parent.Children().Size());
+                parent.Children().Append(TheoryChapter(id, title));
+            }
         }
 
         if (resultCode != SQLITE_DONE)

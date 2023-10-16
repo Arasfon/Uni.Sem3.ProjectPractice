@@ -17,6 +17,7 @@ namespace winrt::ProPractice::implementation
 
     private:
         Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter> _theoryChapters;
+        std::unordered_map<int64_t, std::vector<unsigned int>> _chapterPaths;
     };
 }
 
