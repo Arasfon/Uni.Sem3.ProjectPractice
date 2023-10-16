@@ -7,6 +7,10 @@
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Input;
+using namespace Windows::System;
+
+#include <winrt/Microsoft.UI.Xaml.Input.h>
 
 namespace winrt::ProPractice::implementation
 {
@@ -94,6 +98,9 @@ namespace winrt::ProPractice::implementation
 
                 textBox.LostFocus([this](IInspectable const& sender, RoutedEventArgs const&)
                     {
+                        if (_enterHandled)
+                            return;
+
                         const auto tb = unbox_value<TextBox>(sender);
 
                         for (auto answer : _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers())
@@ -107,6 +114,29 @@ namespace winrt::ProPractice::implementation
                             else
                                 answer.IsChosen(false);
                         }
+                    });
+
+                textBox.KeyDown([this](IInspectable const& sender, KeyRoutedEventArgs const& e)
+                    {
+                        if (_enterHandled || e.Key() != VirtualKey::Enter)
+                            return;
+
+                        const auto tb = unbox_value<TextBox>(sender);
+
+                        for (auto answer : _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers())
+                        {
+                            const auto answerText = answer.Text().c_str();
+                            const auto userText = tb.Text().c_str();
+
+                            // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
+                            if (CSTR_EQUAL == CompareStringEx(LOCALE_NAME_USER_DEFAULT, LINGUISTIC_IGNORECASE, answerText, -1, userText, -1, nullptr, nullptr, 0))
+                                answer.IsChosen(true);
+                            else
+                                answer.IsChosen(false);
+                        }
+
+                        _enterHandled = true;
+                        _examController.CallControl(ExamControlAction::Continue);
                     });
 
                 ContentStackPanel().Children().Append(textBox);

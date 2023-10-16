@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Frame x:Name="ContentFrame" Grid.Row="0"/>
+        <Frame x:Name="ContentFrame" Grid.Row="0" TabIndex="0"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Сбросить тестирование и выйти" Click="ResetExamButtonClick"/>
+            <Button Grid.Column="0" Content="Сбросить тестирование и выйти" Click="ResetExamButtonClick" TabIndex="2"/>
             <StackPanel Grid.Column="1" Orientation="Vertical" Margin="12,0,12,0" MaxWidth="200" VerticalAlignment="Center" Spacing="3">
                 <StackPanel.Transitions>
                     <RepositionThemeTransition/>
@@ -32,7 +32,7 @@
                 <ProgressBar x:Name="ExamProgressBar"/>
                 <TextBlock x:Name="RemainingTimeTextBlock" Text="Осталось -:-" HorizontalAlignment="Center"/>
             </StackPanel>
-            <Button Grid.Column="2" x:Name="ContinueExamButton" Content="Следующий вопрос" Style="{StaticResource AccentButtonStyle}" Click="ContinueExamButtonClick">
+            <Button Grid.Column="2" x:Name="ContinueExamButton" Content="Следующий вопрос" Style="{StaticResource AccentButtonStyle}" Click="ContinueExamButtonClick" TabIndex="1">
                 <Button.ContentTransitions>
                     <ContentThemeTransition/>
                 </Button.ContentTransitions>
