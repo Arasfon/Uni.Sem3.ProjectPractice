@@ -72,7 +72,7 @@ namespace winrt::ProPractice::implementation
         ResultTextBlock().Text(L"Результат: " + std::to_wstring(correctCount) + L"/" + std::to_wstring(_examController.Questions().Size()));
     }
 
-    void ExamResultsPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&)
+    void ExamResultsPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&) const
     {
         _examController.CallControl(ExamControlAction::Reset);
     }

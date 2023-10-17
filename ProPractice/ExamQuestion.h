@@ -11,14 +11,14 @@ namespace winrt::ProPractice::implementation
         hstring Text();
         void Text(hstring const& value);
 
-        winrt::ProPractice::ExamQuestionType Type();
+        winrt::ProPractice::ExamQuestionType Type() const;
         void Type(winrt::ProPractice::ExamQuestionType const& value);
 
         winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamAnswer> Answers();
 
     private:
         hstring _text;
-        ExamQuestionType _type;
+        ExamQuestionType _type = ExamQuestionType::MultipleChoice;
         winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamAnswer> _answers = nullptr;
     };
 }

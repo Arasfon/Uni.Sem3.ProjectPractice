@@ -73,7 +73,7 @@ namespace winrt::ProPractice::implementation
         co_return count;
     }
 
-    void ExamStartPage::StartButton_Click(IInspectable const&, RoutedEventArgs const&)
+    void ExamStartPage::StartButton_Click(IInspectable const&, RoutedEventArgs const&) const
     {
         _examController.CallControl(ExamControlAction::Start);
     }

@@ -8,7 +8,7 @@ namespace winrt::ProPractice::implementation
     {
         ExamController();
 
-        uint32_t CurrentQuestion();
+        uint32_t CurrentQuestion() const;
         void CurrentQuestion(uint32_t const& value);
 
         winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamQuestion> Questions();

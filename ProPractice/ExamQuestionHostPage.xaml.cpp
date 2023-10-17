@@ -100,13 +100,13 @@ namespace winrt::ProPractice::implementation
         UpdateRemainingTime();
     }
 
-    void ExamQuestionHostPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&)
+    void ExamQuestionHostPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&) const
     {
         _timer.Stop();
         _examController.CallControl(ExamControlAction::Reset);
     }
 
-    void ExamQuestionHostPage::ContinueExamButtonClick(IInspectable const&, RoutedEventArgs const&)
+    void ExamQuestionHostPage::ContinueExamButtonClick(IInspectable const&, RoutedEventArgs const&) const
     {
         _examController.CallControl(ExamControlAction::Continue);
     }

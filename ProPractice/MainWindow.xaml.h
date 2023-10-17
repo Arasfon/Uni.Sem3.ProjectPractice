@@ -8,10 +8,10 @@ namespace winrt::ProPractice::implementation
     {
         MainWindow();
 
-        bool AreNavigationMenuItemsEnabled();
+        bool AreNavigationMenuItemsEnabled() const;
         void AreNavigationMenuItemsEnabled(bool value);
 
-        bool IsDataCurrent();
+        bool IsDataCurrent() const;
         void IsDataCurrent(bool value);
 
         void NavView_SelectionChanged(IInspectable const& sender, Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& e);

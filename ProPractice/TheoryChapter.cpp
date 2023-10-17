@@ -12,7 +12,7 @@ namespace winrt::ProPractice::implementation
         _children = winrt::single_threaded_observable_vector<ProPractice::TheoryChapter>();
     }
 
-    int64_t TheoryChapter::Id()
+    int64_t TheoryChapter::Id() const
     {
         return _id;
     }

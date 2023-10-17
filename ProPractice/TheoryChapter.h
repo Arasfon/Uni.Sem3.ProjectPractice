@@ -8,7 +8,7 @@ namespace winrt::ProPractice::implementation
         TheoryChapter() = delete;
 
         TheoryChapter(int64_t id, hstring const& title);
-        int64_t Id();
+        int64_t Id() const;
         void Id(int64_t value);
         hstring Title();
         void Title(hstring const& value);

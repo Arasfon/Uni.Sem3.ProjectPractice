@@ -16,7 +16,7 @@ namespace winrt::ProPractice::implementation
         _text = value;
     }
 
-    bool ExamAnswer::IsCorrect()
+    bool ExamAnswer::IsCorrect() const
     {
         return _isCorrect;
     }
@@ -26,7 +26,7 @@ namespace winrt::ProPractice::implementation
         _isCorrect = value;
     }
 
-    bool ExamAnswer::IsChosen()
+    bool ExamAnswer::IsChosen() const
     {
         return _isChosen;
     }

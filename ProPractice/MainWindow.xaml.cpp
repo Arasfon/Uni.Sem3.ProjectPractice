@@ -25,7 +25,7 @@ namespace winrt::ProPractice::implementation
         WinUIEx::CenterOnScreen(*this);
     }
 
-    bool MainWindow::AreNavigationMenuItemsEnabled()
+    bool MainWindow::AreNavigationMenuItemsEnabled() const
     {
         return _areNavigationMenuItemsEnabled;
     }
@@ -39,7 +39,7 @@ namespace winrt::ProPractice::implementation
         }
     }
 
-    bool MainWindow::IsDataCurrent()
+    bool MainWindow::IsDataCurrent() const
     {
         return _isDataCurrent;
     }

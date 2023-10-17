@@ -21,7 +21,7 @@ namespace winrt::ProPractice::implementation
         _text = value;
     }
 
-    ExamQuestionType ExamQuestion::Type()
+    ExamQuestionType ExamQuestion::Type() const
     {
         return _type;
     }

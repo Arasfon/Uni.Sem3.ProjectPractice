@@ -12,7 +12,7 @@ namespace winrt::ProPractice::implementation
 
         Windows::Foundation::IAsyncOperation<int64_t> GetQuestionCount() const;
 
-        void StartButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e);
+        void StartButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e) const;
 
     private:
         ProPractice::ExamController _examController;

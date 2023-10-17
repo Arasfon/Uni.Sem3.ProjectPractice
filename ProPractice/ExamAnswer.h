@@ -11,16 +11,16 @@ namespace winrt::ProPractice::implementation
         hstring Text();
         void Text(hstring const& value);
 
-        bool IsCorrect();
+        bool IsCorrect() const;
         void IsCorrect(bool value);
 
-        bool IsChosen();
+        bool IsChosen() const;
         void IsChosen(bool value);
 
     private:
         hstring _text;
-        bool _isCorrect;
-        bool _isChosen;
+        bool _isCorrect = false;
+        bool _isChosen = false;
     };
 }
 namespace winrt::ProPractice::factory_implementation
