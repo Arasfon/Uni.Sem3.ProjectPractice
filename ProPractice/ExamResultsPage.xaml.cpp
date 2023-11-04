@@ -4,7 +4,7 @@
 #include "ExamResultsPage.g.cpp"
 #endif
 
-#include <sstream>
+#include <format>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -69,7 +69,7 @@ namespace winrt::ProPractice::implementation
             correctCount += isCorrect ? 1 : 0;
         }
 
-        ResultTextBlock().Text(L"Результат: " + std::to_wstring(correctCount) + L"/" + std::to_wstring(_examController.Questions().Size()));
+        ResultTextBlock().Text(L"Результат: " + std::to_wstring(correctCount) + L"/" + std::to_wstring(_examController.Questions().Size()) + L" (" + std::format(L"{:.1f}", std::round(static_cast<double>(correctCount) / _examController.Questions().Size() * 100 * 10) / 10) + L"%)");
     }
 
     void ExamResultsPage::ResetExamButtonClick(IInspectable const&, RoutedEventArgs const&) const
