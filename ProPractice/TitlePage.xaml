@@ -33,7 +33,7 @@
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
             Выполнил: Бояркин Е. В., БЭИ2202
             <LineBreak/>
-            Проверил: к.п.н., доцент Гуриков С. Р.
+            Проверил: к.п.н., доцент кафедры "Информатика" Гуриков С. Р.
         </TextBlock>
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,36,0,0">
             Чтобы начать изучение темы волоконно-оптических линий связи, Вы можете перейти на <Bold>вкладку "Теория"</Bold>.
