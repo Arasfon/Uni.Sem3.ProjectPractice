@@ -3,7 +3,11 @@ namespace ProPractice
     enum ExamControlAction
     {
         Start,
-        Continue,
+        ContinueForward,
+        ContinueBackward,
+        QuestionSelect,
+        JumpToCurrentQuestion,
+        End,
         Reset
     };
 }

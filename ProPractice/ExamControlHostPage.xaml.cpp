@@ -50,11 +50,8 @@ namespace winrt::ProPractice::implementation
                 ContentFrame().Navigate(xaml_typename<ExamQuestionHostPage>(), _examController);
                 break;
             }
-            case ExamControlAction::Continue:
+            case ExamControlAction::End:
             {
-                if (_examController.CurrentQuestion() + 1 != _examController.Questions().Size())
-                    break;
-
                 _mainWindow.AreNavigationMenuItemsEnabled(true);
 
                 ContentFrame().Navigate(xaml_typename<ExamResultsPage>(), _examController);

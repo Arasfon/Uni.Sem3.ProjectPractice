@@ -10,6 +10,7 @@ using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Media;
+using namespace Microsoft::UI::Xaml::Navigation;
 
 namespace winrt::ProPractice::implementation
 {
@@ -18,7 +19,7 @@ namespace winrt::ProPractice::implementation
         InitializeComponent();
     }
 
-    void ExamResultsPage::OnNavigatedTo(Navigation::NavigationEventArgs const& e)
+    void ExamResultsPage::OnNavigatedTo(NavigationEventArgs const& e)
     {
         _examController = unbox_value<ExamController>(e.Parameter());
 

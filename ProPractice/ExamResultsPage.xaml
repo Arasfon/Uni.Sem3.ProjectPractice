@@ -14,9 +14,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}">
-            Тестирование окончено.
-        </TextBlock>
+        <TextBlock Grid.Row="0" Text="Тестирование окончено." HorizontalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <TextBlock Grid.Row="1" x:Name="ResultTextBlock" Text="Результат: -/-" HorizontalAlignment="Center" Margin="0,12,0,0" Style="{StaticResource SubtitleTextBlockStyle}"/>
         <GridView Grid.Row="2" x:Name="ResultsGridView" SelectionMode="None" Margin="0,12,0,0"/>
         <Button Grid.Row="3" Content="Начать заново" Margin="0,12,0,0" HorizontalAlignment="Center" Click="ResetExamButtonClick"/>

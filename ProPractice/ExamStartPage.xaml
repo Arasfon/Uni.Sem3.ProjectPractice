@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Margin="16" MaxWidth="500">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Margin="16" MaxWidth="700">
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Style="{StaticResource SubtitleTextBlockStyle}">
             Добро пожаловать в тестирование!
         </TextBlock>
@@ -17,13 +17,15 @@
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
             1. Время ограничено, поэтому старайтесь отвечать на вопросы быстро и точно.
             <LineBreak/>
-            2. После каждого вопроса нажмите кнопку "Следующий вопрос", чтобы перейти к следующему вопросу. Вы не сможете вернуться к предыдущим вопросам.
+            2. После каждого вопроса нажмите кнопку "Следующий вопрос", чтобы перейти к следующему вопросу. Вы также можете перейти к предыдущему вопросу, нажав кнопку "Предыдущий вопрос", или к любому желаемому в любой момент времени, нажав кнопку "Выбрать вопрос".
             <LineBreak/>
             3. Пожалуйста, отвечайте на все вопросы, даже если не уверены в ответе.
             <LineBreak/>
-            4. Попытайтесь не использовать внешние источники информации, такие как интернет, книги или помощь других людей.
+            4. Если вы ответите на последний вопрос, но пропустили какие-либо вопросы ранее, то будет предложено перейти к ним, вместо завершения экзамена. Если не хотите отвечать на них, то на экране выбора вопроса можно завершить экзамен в любой момент.
             <LineBreak/>
-            5. Ваш прогресс будет автоматически сохранен, и вы сможете увидеть свой результат по завершении теста.
+            5. Попытайтесь не использовать внешние источники информации, такие как интернет, книги или помощь других людей.
+            <LineBreak/>
+            6. Ваш прогресс будет автоматически сохранен, и вы сможете увидеть свой результат по завершении теста.
         </TextBlock>
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
             Готовы начать? Нажмите "Начать", чтобы начать тест. Удачи!

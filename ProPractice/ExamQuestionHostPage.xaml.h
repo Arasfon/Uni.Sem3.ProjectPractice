@@ -18,11 +18,14 @@ namespace winrt::ProPractice::implementation
         void TimerTick(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::Foundation::IInspectable const& e);
 
         void ResetExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e) const;
-        void ContinueExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e) const;
+        void ContinueForwardExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e);
+        void ContinueBackwardExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e) const;
+        void QuestionSelectExamButtonClick(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e) const;
 
     private:
         ExamController _examController;
-        winrt::Microsoft::UI::Xaml::DispatcherTimer _timer;
+        winrt::event_token _controlActionEventToken;
+        winrt::Microsoft::UI::Xaml::DispatcherTimer _timer = nullptr;
         std::chrono::seconds _remainingTime = std::chrono::seconds{0};
     };
 }

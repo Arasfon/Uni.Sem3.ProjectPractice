@@ -10,5 +10,7 @@ namespace ProPractice
         String Text;
         ExamQuestionType Type;
         Windows.Foundation.Collections.IVector<ExamAnswer> Answers { get; };
+        Object CustomDataContext;
+        Boolean IsAnswered();
     };
 }

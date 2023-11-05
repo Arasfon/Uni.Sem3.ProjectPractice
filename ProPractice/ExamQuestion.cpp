@@ -4,6 +4,10 @@
 #include "ExamQuestion.g.cpp"
 #endif
 
+using namespace winrt;
+using namespace Windows::Foundation::Collections;
+using namespace Windows::Foundation;
+
 namespace winrt::ProPractice::implementation
 {
     ExamQuestion::ExamQuestion()
@@ -31,8 +35,37 @@ namespace winrt::ProPractice::implementation
         _type = value;
     }
 
-    Windows::Foundation::Collections::IVector<ExamAnswer> ExamQuestion::Answers()
+    IVector<ExamAnswer> ExamQuestion::Answers()
     {
         return _answers;
+    }
+
+    IInspectable ExamQuestion::CustomDataContext() const
+    {
+        return _customDataContext;
+    }
+
+    void ExamQuestion::CustomDataContext(IInspectable const& value)
+    {
+        _customDataContext = value;
+    }
+
+    bool ExamQuestion::IsAnswered()
+    {
+        if (Type() == ExamQuestionType::FreeInput)
+            return CustomDataContext() != nullptr;
+
+        bool isAnswered = false;
+
+        for (auto answer : Answers())
+        {
+            if (answer.IsChosen())
+            {
+                isAnswered = true;
+                break;
+            }
+        }
+
+        return isAnswered;
     }
 }

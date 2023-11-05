@@ -10,6 +10,7 @@ using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Input;
+using namespace Microsoft::UI::Xaml::Navigation;
 using namespace Windows::System;
 
 namespace winrt::ProPractice::implementation
@@ -19,7 +20,7 @@ namespace winrt::ProPractice::implementation
         InitializeComponent();
     }
 
-    void ExamQuestionPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+    void ExamQuestionPage::OnNavigatedTo(NavigationEventArgs const& e)
     {
         _examController = unbox_value<ExamController>(e.Parameter());
 
@@ -41,6 +42,7 @@ namespace winrt::ProPractice::implementation
 
                     answerCheckBox.Content(box_value(answer.Text()));
                     answerCheckBox.Tag(box_value(i));
+                    answerCheckBox.IsChecked(answer.IsChosen());
                     answerCheckBox.Click([this](IInspectable const& sender, RoutedEventArgs const&)
                         {
                             const CheckBox cb = unbox_value<CheckBox>(sender);
@@ -67,6 +69,7 @@ namespace winrt::ProPractice::implementation
 
                     answerRadioButton.Content(box_value(answer.Text()));
                     answerRadioButton.Tag(box_value(i));
+                    answerRadioButton.IsChecked(answer.IsChosen());
                     
                     radioButtons.Items().Append(answerRadioButton);
                 }
@@ -96,6 +99,11 @@ namespace winrt::ProPractice::implementation
                 textBox.Margin({ 0, 8, 0, 0 });
                 textBox.PlaceholderText(L"Ответ");
 
+                const auto storedAnswerText = _examController.Questions().GetAt(_examController.CurrentQuestion()).CustomDataContext();
+
+                if (storedAnswerText != nullptr)
+                    textBox.Text(unbox_value<hstring>(storedAnswerText));
+
                 textBox.LostFocus([this](IInspectable const& sender, RoutedEventArgs const&)
                     {
                         if (_enterHandled)
@@ -103,10 +111,18 @@ namespace winrt::ProPractice::implementation
 
                         const auto tb = unbox_value<TextBox>(sender);
 
-                        for (auto answer : _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers())
+                        const auto userText = tb.Text().c_str();
+
+                        const auto currentQuestion = _examController.Questions().GetAt(_examController.CurrentQuestion());
+
+                        if (tb.Text() != L"")
+                        currentQuestion.CustomDataContext(box_value(tb.Text()));
+                        else
+                            currentQuestion.CustomDataContext(nullptr);
+
+                        for (auto answer : currentQuestion.Answers())
                         {
                             const auto answerText = answer.Text().c_str();
-                            const auto userText = tb.Text().c_str();
 
                             // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
                             if (CSTR_EQUAL == CompareStringEx(LOCALE_NAME_USER_DEFAULT, LINGUISTIC_IGNORECASE, answerText, -1, userText, -1, nullptr, nullptr, 0))
@@ -121,12 +137,22 @@ namespace winrt::ProPractice::implementation
                         if (_enterHandled || e.Key() != VirtualKey::Enter)
                             return;
 
+                        _enterHandled = true;
+
                         const auto tb = unbox_value<TextBox>(sender);
 
-                        for (auto answer : _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers())
+                        const auto userText = tb.Text().c_str();
+
+                        const auto currentQuestion = _examController.Questions().GetAt(_examController.CurrentQuestion());
+
+                        if (tb.Text() != L"")
+                        currentQuestion.CustomDataContext(box_value(tb.Text()));
+                        else
+                            currentQuestion.CustomDataContext(nullptr);
+
+                        for (auto answer : currentQuestion.Answers())
                         {
                             const auto answerText = answer.Text().c_str();
-                            const auto userText = tb.Text().c_str();
 
                             // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
                             if (CSTR_EQUAL == CompareStringEx(LOCALE_NAME_USER_DEFAULT, LINGUISTIC_IGNORECASE, answerText, -1, userText, -1, nullptr, nullptr, 0))
@@ -135,8 +161,7 @@ namespace winrt::ProPractice::implementation
                                 answer.IsChosen(false);
                         }
 
-                        _enterHandled = true;
-                        _examController.CallControl(ExamControlAction::Continue);
+                        _examController.CallControl(ExamControlAction::ContinueForward);
                     });
 
                 ContentStackPanel().Children().Append(textBox);

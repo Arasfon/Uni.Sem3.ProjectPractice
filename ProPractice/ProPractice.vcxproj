@@ -143,6 +143,10 @@
       <DependentUpon>ExamQuestionPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="ExamQuestionSelectPage.xaml.h">
+      <DependentUpon>ExamQuestionSelectPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ExamResultsPage.xaml.h">
       <DependentUpon>ExamResultsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -182,6 +186,9 @@
     <Page Include="ExamQuestionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ExamQuestionSelectPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ExamResultsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -209,6 +216,10 @@
     </ClCompile>
     <ClCompile Include="ExamQuestionPage.xaml.cpp">
       <DependentUpon>ExamQuestionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ExamQuestionSelectPage.xaml.cpp">
+      <DependentUpon>ExamQuestionSelectPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="ExamResultsPage.xaml.cpp">
@@ -267,6 +278,10 @@
     </Midl>
     <Midl Include="ExamQuestionPage.idl">
       <DependentUpon>ExamQuestionPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ExamQuestionSelectPage.idl">
+      <DependentUpon>ExamQuestionSelectPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="ExamQuestionType.idl" />
