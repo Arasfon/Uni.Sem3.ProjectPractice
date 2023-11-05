@@ -5,6 +5,7 @@
 #endif
 
 #include <winrt/Microsoft.UI.Xaml.Input.h>
+#include <sstream>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -27,6 +28,12 @@ namespace winrt::ProPractice::implementation
         const auto question = _examController.Questions().GetAt(_examController.CurrentQuestion());
 
         QuestionTextTextBlock().Text(question.Text());
+
+        // Debug ↓
+        std::wostringstream debugExamAnswersString;
+        debugExamAnswersString << L"Debug: Правильный ответ: ";
+        auto debugExamAnswersStringItemSeparator = L"";
+        // Debug ↑
 
         switch (question.Type())
         {
@@ -51,6 +58,13 @@ namespace winrt::ProPractice::implementation
                         });
 
                     ContentStackPanel().Children().Append(answerCheckBox);
+
+                    // Debug
+                    if (answer.IsCorrect())
+                    {
+                        debugExamAnswersString << debugExamAnswersStringItemSeparator << answer.Text();
+                        debugExamAnswersStringItemSeparator = L", ";
+                    }
                 }
 
                 break;
@@ -70,8 +84,15 @@ namespace winrt::ProPractice::implementation
                     answerRadioButton.Content(box_value(answer.Text()));
                     answerRadioButton.Tag(box_value(i));
                     answerRadioButton.IsChecked(answer.IsChosen());
-                    
+
                     radioButtons.Items().Append(answerRadioButton);
+
+                    // Debug
+                    if (answer.IsCorrect())
+                    {
+                        debugExamAnswersString << debugExamAnswersStringItemSeparator << answer.Text();
+                        debugExamAnswersStringItemSeparator = L", ";
+                    }
                 }
 
                 radioButtons.SelectionChanged([this](IInspectable const&, SelectionChangedEventArgs const& e)
@@ -116,7 +137,7 @@ namespace winrt::ProPractice::implementation
                         const auto currentQuestion = _examController.Questions().GetAt(_examController.CurrentQuestion());
 
                         if (tb.Text() != L"")
-                        currentQuestion.CustomDataContext(box_value(tb.Text()));
+                            currentQuestion.CustomDataContext(box_value(tb.Text()));
                         else
                             currentQuestion.CustomDataContext(nullptr);
 
@@ -146,7 +167,7 @@ namespace winrt::ProPractice::implementation
                         const auto currentQuestion = _examController.Questions().GetAt(_examController.CurrentQuestion());
 
                         if (tb.Text() != L"")
-                        currentQuestion.CustomDataContext(box_value(tb.Text()));
+                            currentQuestion.CustomDataContext(box_value(tb.Text()));
                         else
                             currentQuestion.CustomDataContext(nullptr);
 
@@ -166,8 +187,26 @@ namespace winrt::ProPractice::implementation
 
                 ContentStackPanel().Children().Append(textBox);
 
+                // Debug
+                for (const auto debugAnswers = _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers();
+                    auto answer : debugAnswers)
+                {
+                    if (answer.IsCorrect())
+                    {
+                        debugExamAnswersString << debugExamAnswersStringItemSeparator << answer.Text();
+                        debugExamAnswersStringItemSeparator = L", ";
+                    }
+                }
+
                 break;
             }
+        }
+
+        // Debug
+        if (__debugExamAnswers)
+        {
+            DebugExamAnswersTextBlock().Text(debugExamAnswersString.str());
+            DebugExamAnswersTextBlock().Visibility(Visibility::Visible);
         }
     }
 }

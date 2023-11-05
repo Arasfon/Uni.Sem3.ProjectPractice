@@ -2,6 +2,7 @@
 
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
+#include "ExamQuestionPage.xaml.h"
 
 using namespace winrt;
 using namespace Windows::Foundation;
@@ -35,8 +36,11 @@ App::App()
 /// Invoked when the application is launched.
 /// </summary>
 /// <param name="e">Details about the launch request and process.</param>
-void App::OnLaunched(LaunchActivatedEventArgs const&)
+void App::OnLaunched(LaunchActivatedEventArgs const& e)
 {
+    if (e.Arguments() == L"--debug-exam-answers")
+        ExamQuestionPage::__debugExamAnswers = true;
+
     _window = make<MainWindow>();
     _window.Activate();
 }

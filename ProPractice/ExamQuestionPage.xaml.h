@@ -10,6 +10,8 @@ namespace winrt::ProPractice::implementation
 
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 
+        static inline bool __debugExamAnswers = false;
+
     private:
         ExamController _examController;
         bool _enterHandled = false;
