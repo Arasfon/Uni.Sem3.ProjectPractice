@@ -87,12 +87,14 @@ namespace winrt::ProPractice::implementation
         sender.CoreWebView2().Settings().AreDevToolsEnabled(false);
 #endif
         sender.CoreWebView2().Settings().HiddenPdfToolbarItems(
+#ifndef _DEBUG
+            CoreWebView2PdfToolbarItems::MoreSettings |
+#endif
             CoreWebView2PdfToolbarItems::Bookmarks |
             CoreWebView2PdfToolbarItems::Print |
             CoreWebView2PdfToolbarItems::Save |
             CoreWebView2PdfToolbarItems::SaveAs |
             CoreWebView2PdfToolbarItems::FullScreen |
-            CoreWebView2PdfToolbarItems::MoreSettings | 
             CoreWebView2PdfToolbarItems::PageLayout);
 
         ContentWebView().CoreWebView2().AddWebResourceRequestedFilter(L"*", CoreWebView2WebResourceContext::All);
