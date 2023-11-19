@@ -90,7 +90,6 @@ namespace winrt::ProPractice::implementation
 #ifndef _DEBUG
             CoreWebView2PdfToolbarItems::MoreSettings |
 #endif
-            CoreWebView2PdfToolbarItems::Bookmarks |
             CoreWebView2PdfToolbarItems::Print |
             CoreWebView2PdfToolbarItems::Save |
             CoreWebView2PdfToolbarItems::SaveAs |
