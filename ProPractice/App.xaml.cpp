@@ -36,10 +36,15 @@ App::App()
 /// Invoked when the application is launched.
 /// </summary>
 /// <param name="e">Details about the launch request and process.</param>
-void App::OnLaunched(LaunchActivatedEventArgs const& e)
+void App::OnLaunched(LaunchActivatedEventArgs const&)
 {
-    if (e.Arguments() == L"--debug-exam-answers")
+    int argc;
+    const auto argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+
+    if (argc > 1 && CSTR_EQUAL == CompareStringOrdinal(argv[1], -1, L"--debug-exam-answers", -1, false))
         ExamQuestionPage::__debugExamAnswers = true;
+
+    LocalFree(argv);
 
     _window = make<MainWindow>();
     _window.Activate();
