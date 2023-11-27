@@ -30,7 +30,7 @@ namespace winrt::ProPractice::implementation
         return _areNavigationMenuItemsEnabled;
     }
 
-    void MainWindow::AreNavigationMenuItemsEnabled(bool value)
+    void MainWindow::AreNavigationMenuItemsEnabled(const bool value)
     {
         if (_areNavigationMenuItemsEnabled != value)
         {
@@ -44,7 +44,7 @@ namespace winrt::ProPractice::implementation
         return _isDataCurrent;
     }
 
-    void MainWindow::IsDataCurrent(bool value)
+    void MainWindow::IsDataCurrent(const bool value)
     {
         if (_isDataCurrent != value)
         {

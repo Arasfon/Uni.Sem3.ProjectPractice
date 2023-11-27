@@ -6,7 +6,7 @@
 
 namespace winrt::ProPractice::implementation
 {
-    TheoryChapter::TheoryChapter(int64_t id, hstring const& title)
+    TheoryChapter::TheoryChapter(const int64_t id, hstring const& title)
         : _id { id }, _title { title }
     {
         _children = winrt::single_threaded_observable_vector<ProPractice::TheoryChapter>();
@@ -17,7 +17,7 @@ namespace winrt::ProPractice::implementation
         return _id;
     }
 
-    void TheoryChapter::Id(int64_t value)
+    void TheoryChapter::Id(const int64_t value)
     {
         if (_id != value)
         {
