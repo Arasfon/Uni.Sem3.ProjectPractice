@@ -1,4 +1,4 @@
-// Uses names and parts of WinUIEx library (https://github.com/dotMorten/WinUIEx).
+// Uses parts of WinUIEx library (https://github.com/dotMorten/WinUIEx).
 // Copyright (c) 2021 Morten Nielsen. All rights reserved. Licensed under MIT License.
 
 #include "pch.h"
