@@ -6,26 +6,15 @@ namespace winrt::ProPractice::implementation
 {
     struct ExamQuestion : ExamQuestionT<ExamQuestion>
     {
-        ExamQuestion();
+        ExamQuestion() = default;
 
-        hstring Text();
-        void Text(hstring const& value);
+        WINRT_PROPERTY(hstring, Text);
+        WINRT_PROPERTY(winrt::ProPractice::ExamQuestionType, Type, ExamQuestionType::MultipleChoice);
+        WINRT_PROPERTY(winrt::Windows::Foundation::IInspectable, CustomDataContext, nullptr);
 
-        winrt::ProPractice::ExamQuestionType Type() const;
-        void Type(winrt::ProPractice::ExamQuestionType const& value);
+        WINRT_READONLY_PROPERTY(winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamAnswer>, Answers, winrt::single_threaded_vector<ExamAnswer>());
 
-        winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamAnswer> Answers();
-
-        winrt::Windows::Foundation::IInspectable CustomDataContext() const;
-        void CustomDataContext(winrt::Windows::Foundation::IInspectable const& value);
-
-        bool IsAnswered();
-
-    private:
-        hstring _text;
-        ExamQuestionType _type = ExamQuestionType::MultipleChoice;
-        winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamAnswer> _answers = nullptr;
-        winrt::Windows::Foundation::IInspectable _customDataContext = nullptr;
+        bool IsAnswered() const;
     };
 }
 namespace winrt::ProPractice::factory_implementation

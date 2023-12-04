@@ -8,19 +8,9 @@ namespace winrt::ProPractice::implementation
     {
         ExamAnswer() = default;
 
-        hstring Text();
-        void Text(hstring const& value);
-
-        bool IsCorrect() const;
-        void IsCorrect(bool value);
-
-        bool IsChosen() const;
-        void IsChosen(bool value);
-
-    private:
-        hstring _text;
-        bool _isCorrect = false;
-        bool _isChosen = false;
+        WINRT_PROPERTY(hstring, Text);
+        WINRT_PROPERTY(bool, IsCorrect, false);
+        WINRT_PROPERTY(bool, IsChosen, false);
     };
 }
 namespace winrt::ProPractice::factory_implementation

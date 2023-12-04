@@ -8,19 +8,11 @@ namespace winrt::ProPractice::implementation
         TheoryChapter() = delete;
 
         TheoryChapter(int64_t id, hstring const& title);
-        int64_t Id() const;
-        void Id(int64_t value);
-        hstring Title();
-        void Title(hstring const& value);
-        winrt::Windows::Foundation::Collections::IObservableVector<winrt::ProPractice::TheoryChapter> Children();
-        winrt::event_token PropertyChanged(winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
-        void PropertyChanged(winrt::event_token const& token) noexcept;
 
-    private:
-        hstring _title;
-        int64_t _id;
-        winrt::Windows::Foundation::Collections::IObservableVector<winrt::ProPractice::TheoryChapter> _children;
-        winrt::event<Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> _propertyChanged;
+        WINRT_READONLY_PROPERTY(int64_t, Id);
+        WINRT_READONLY_PROPERTY(hstring, Title);
+
+        WINRT_READONLY_PROPERTY(winrt::Windows::Foundation::Collections::IObservableVector<winrt::ProPractice::TheoryChapter>, Children, winrt::single_threaded_observable_vector<ProPractice::TheoryChapter>());
     };
 }
 

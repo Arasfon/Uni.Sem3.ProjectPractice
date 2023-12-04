@@ -26,3 +26,4 @@
 #include <wil/cppwinrt_helpers.h>
 
 #include "sqlite3.h"
+#include "WinRTUtils.h"

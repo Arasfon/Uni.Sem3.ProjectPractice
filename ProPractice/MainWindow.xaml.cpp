@@ -25,49 +25,11 @@ namespace winrt::ProPractice::implementation
         WinUIEx::CenterOnScreen(*this);
     }
 
-    bool MainWindow::AreNavigationMenuItemsEnabled() const
-    {
-        return _areNavigationMenuItemsEnabled;
-    }
-
-    void MainWindow::AreNavigationMenuItemsEnabled(const bool value)
-    {
-        if (_areNavigationMenuItemsEnabled != value)
-        {
-            _areNavigationMenuItemsEnabled = value;
-            _propertyChanged(*this, Data::PropertyChangedEventArgs{ L"AreNavigationMenuItemsEnabled" });
-        }
-    }
-
-    bool MainWindow::IsDataCurrent() const
-    {
-        return _isDataCurrent;
-    }
-
-    void MainWindow::IsDataCurrent(const bool value)
-    {
-        if (_isDataCurrent != value)
-        {
-            _isDataCurrent = value;
-            _propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDataCurrent" });
-        }
-    }
-
     void MainWindow::NavView_SelectionChanged(IInspectable const&, NavigationViewSelectionChangedEventArgs const& e)
     {
         const auto selectedItem = unbox_value<IFrameworkElement>(e.SelectedItem());
         const TypeName pageTypeName { L"ProPractice." + unbox_value<hstring>(selectedItem.Tag()) + L"Page", TypeKind::Metadata };
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(pageTypeName, *this);
-    }
-
-    winrt::event_token MainWindow::PropertyChanged(Data::PropertyChangedEventHandler const& handler)
-    {
-        return _propertyChanged.add(handler);
-    }
-
-    void MainWindow::PropertyChanged(winrt::event_token const& token) noexcept
-    {
-        _propertyChanged.remove(token);
     }
 }

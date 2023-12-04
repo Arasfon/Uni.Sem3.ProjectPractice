@@ -176,6 +176,7 @@
       <DependentUpon>TitlePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="WinRTUtils.h" />
     <ClInclude Include="WinUIEx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -333,6 +334,7 @@
     <CopyFileToFolders Include="data.db">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+    <None Include="cpp.hint" />
     <None Include="packages.config" />
   </ItemGroup>
   <!--

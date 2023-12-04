@@ -6,22 +6,14 @@ namespace winrt::ProPractice::implementation
 {
     struct ExamController : ExamControllerT<ExamController>
     {
-        ExamController();
+        ExamController() = default;
 
-        uint32_t CurrentQuestion() const;
-        void CurrentQuestion(uint32_t const& value);
+        WINRT_PROPERTY(uint32_t, CurrentQuestion, 0);
+        WINRT_READONLY_PROPERTY(winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamQuestion>, Questions, single_threaded_vector<ExamQuestion>());
 
-        winrt::Windows::Foundation::Collections::IVector<winrt::ProPractice::ExamQuestion> Questions();
-
-        winrt::event_token OnControlAction(winrt::Windows::Foundation::EventHandler<winrt::ProPractice::ExamControlAction> const& handler);
-        void OnControlAction(winrt::event_token const& token) noexcept;
+        WINRT_CALLBACK(OnControlAction, winrt::Windows::Foundation::EventHandler<winrt::ProPractice::ExamControlAction>);
 
         void CallControl(ExamControlAction action);
-
-    private:
-        uint32_t _currentQuestion = 0;
-        winrt::Windows::Foundation::Collections::IVector<ExamQuestion> _questions = nullptr;
-        winrt::event<winrt::Windows::Foundation::EventHandler<winrt::ProPractice::ExamControlAction>> _onControlActionEvent;
     };
 }
 namespace winrt::ProPractice::factory_implementation

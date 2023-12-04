@@ -8,7 +8,7 @@ namespace winrt::ProPractice::implementation
     {
         TheoryPage();
 
-        Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter> TheoryChapters();
+        WINRT_READONLY_PROPERTY(Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter>, TheoryChapters, winrt::single_threaded_observable_vector<ProPractice::TheoryChapter>());
 
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
         void OnNavigatedFrom(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
@@ -20,7 +20,6 @@ namespace winrt::ProPractice::implementation
         Windows::Foundation::IAsyncAction LoadChapters();
 
     private:
-        Windows::Foundation::Collections::IObservableVector<ProPractice::TheoryChapter> _theoryChapters;
         std::unordered_map<int64_t, std::vector<unsigned int>> _chapterPaths;
     };
 }

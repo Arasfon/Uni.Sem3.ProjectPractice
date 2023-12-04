@@ -25,18 +25,11 @@ namespace winrt::ProPractice::implementation
     {
         InitializeComponent();
 
-        _theoryChapters = winrt::single_threaded_observable_vector<ProPractice::TheoryChapter>();
-
         // ReSharper disable CppExpressionWithoutSideEffects
         ContentWebView().DefaultBackgroundColor(Windows::UI::Color(0, 255, 255, 255));
         ContentWebView().CoreWebView2Initialized({ this, &TheoryPage::OnWebViewInitialized });
         ContentWebView().EnsureCoreWebView2Async();
         // ReSharper restore CppExpressionWithoutSideEffects
-    }
-
-    IObservableVector<ProPractice::TheoryChapter> TheoryPage::TheoryChapters()
-    {
-        return _theoryChapters;
     }
 
     void TheoryPage::OnNavigatedTo(NavigationEventArgs const& e)
@@ -203,8 +196,8 @@ namespace winrt::ProPractice::implementation
 
             if (sqlite3_column_type(sqlStatement, 2) == SQLITE_NULL)
             {
-                _chapterPaths[id] = { _theoryChapters.Size() };
-                _theoryChapters.Append(TheoryChapter(id, title));
+                _chapterPaths[id] = { _TheoryChapters.Size() };
+                _TheoryChapters.Append(TheoryChapter(id, title));
             }
             else
             {
@@ -212,7 +205,7 @@ namespace winrt::ProPractice::implementation
 
                 auto parentPath = _chapterPaths[parentId];
 
-                TheoryChapter parent = _theoryChapters.GetAt(parentPath[0]);
+                TheoryChapter parent = _TheoryChapters.GetAt(parentPath[0]);
                 for (unsigned int i = 1; i < parentPath.size(); ++i)
                 {
                     parent = parent.Children().GetAt(parentPath[i]);

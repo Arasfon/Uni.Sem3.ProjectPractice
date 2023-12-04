@@ -8,21 +8,12 @@ namespace winrt::ProPractice::implementation
     {
         MainWindow();
 
-        bool AreNavigationMenuItemsEnabled() const;
-        void AreNavigationMenuItemsEnabled(bool value);
-
-        bool IsDataCurrent() const;
-        void IsDataCurrent(bool value);
+        WINRT_OBSERVABLE_PROPERTY(bool, AreNavigationMenuItemsEnabled, _PropertyChangedHandlers, true);
+        WINRT_OBSERVABLE_PROPERTY(bool, IsDataCurrent, _PropertyChangedHandlers, false);
 
         void NavView_SelectionChanged(IInspectable const& sender, Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& e);
 
-        winrt::event_token PropertyChanged(winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
-        void PropertyChanged(winrt::event_token const& token) noexcept;
-
-    private:
-        bool _areNavigationMenuItemsEnabled = true;
-        bool _isDataCurrent = false;
-        winrt::event<Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> _propertyChanged;
+        WINRT_CALLBACK(PropertyChanged, winrt::Microsoft::UI::Xaml::Data::PropertyChangedEventHandler);
     };
 }
 

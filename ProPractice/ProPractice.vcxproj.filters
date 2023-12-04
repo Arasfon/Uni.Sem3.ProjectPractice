@@ -94,6 +94,7 @@
     <ClInclude Include="ExamQuestion.h">
       <Filter>Exam Structures</Filter>
     </ClInclude>
+    <ClInclude Include="WinRTUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />

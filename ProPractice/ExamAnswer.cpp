@@ -6,33 +6,5 @@
 
 namespace winrt::ProPractice::implementation
 {
-    hstring ExamAnswer::Text()
-    {
-        return _text;
-    }
 
-    void ExamAnswer::Text(hstring const& value)
-    {
-        _text = value;
-    }
-
-    bool ExamAnswer::IsCorrect() const
-    {
-        return _isCorrect;
-    }
-
-    void ExamAnswer::IsCorrect(const bool value)
-    {
-        _isCorrect = value;
-    }
-
-    bool ExamAnswer::IsChosen() const
-    {
-        return _isChosen;
-    }
-
-    void ExamAnswer::IsChosen(const bool value)
-    {
-        _isChosen = value;
-    }
 }

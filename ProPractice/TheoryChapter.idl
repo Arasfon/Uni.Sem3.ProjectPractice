@@ -1,10 +1,10 @@
 namespace ProPractice
 {
-    runtimeclass TheoryChapter : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    runtimeclass TheoryChapter
     {
         TheoryChapter(Int64 id, String title);
-        Int64 Id;
-        String Title;
+        Int64 Id { get; };
+        String Title { get; };
         Windows.Foundation.Collections.IObservableVector<TheoryChapter> Children { get; };
     }
 }
