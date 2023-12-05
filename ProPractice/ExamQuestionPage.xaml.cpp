@@ -7,6 +7,8 @@
 #include <winrt/Microsoft.UI.Xaml.Input.h>
 #include <sstream>
 
+#include "Debug.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
@@ -59,12 +61,13 @@ namespace winrt::ProPractice::implementation
 
                     ContentStackPanel().Children().Append(answerCheckBox);
 
-                    // Debug
+                    // Debug ↓
                     if (answer.IsCorrect())
                     {
                         debugExamAnswersString << debugExamAnswersStringItemSeparator << answer.Text();
                         debugExamAnswersStringItemSeparator = L", ";
                     }
+                    // Debug ↑
                 }
 
                 break;
@@ -87,12 +90,13 @@ namespace winrt::ProPractice::implementation
 
                     radioButtons.Items().Append(answerRadioButton);
 
-                    // Debug
+                    // Debug ↓
                     if (answer.IsCorrect())
                     {
                         debugExamAnswersString << debugExamAnswersStringItemSeparator << answer.Text();
                         debugExamAnswersStringItemSeparator = L", ";
                     }
+                    // Debug ↑
                 }
 
                 radioButtons.SelectionChanged([this](IInspectable const&, SelectionChangedEventArgs const& e)
@@ -187,7 +191,7 @@ namespace winrt::ProPractice::implementation
 
                 ContentStackPanel().Children().Append(textBox);
 
-                // Debug
+                // Debug ↓
                 for (const auto debugAnswers = _examController.Questions().GetAt(_examController.CurrentQuestion()).Answers();
                     auto answer : debugAnswers)
                 {
@@ -197,16 +201,18 @@ namespace winrt::ProPractice::implementation
                         debugExamAnswersStringItemSeparator = L", ";
                     }
                 }
+                // Debug ↑
 
                 break;
             }
         }
 
-        // Debug
-        if (__debugExamAnswers)
+        // Debug ↓
+        if (Debug::ShowExamAnswers)
         {
             DebugExamAnswersTextBlock().Text(debugExamAnswersString.str());
             DebugExamAnswersTextBlock().Visibility(Visibility::Visible);
         }
+        // Debug ↑
     }
 }

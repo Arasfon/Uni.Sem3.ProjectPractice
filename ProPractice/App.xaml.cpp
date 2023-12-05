@@ -1,6 +1,8 @@
 #include "pch.h"
 
 #include "App.xaml.h"
+
+#include "Debug.h"
 #include "MainWindow.xaml.h"
 #include "ExamQuestionPage.xaml.h"
 
@@ -42,7 +44,7 @@ void App::OnLaunched(LaunchActivatedEventArgs const&)
     const auto argv = CommandLineToArgvW(GetCommandLineW(), &argc);
 
     if (argc > 1 && CSTR_EQUAL == CompareStringOrdinal(argv[1], -1, L"--debug-exam-answers", -1, false))
-        ExamQuestionPage::__debugExamAnswers = true;
+        Debug::ShowExamAnswers = true;
 
     LocalFree(argv);
 

@@ -95,6 +95,7 @@
       <Filter>Exam Structures</Filter>
     </ClInclude>
     <ClInclude Include="WinRTUtils.h" />
+    <ClInclude Include="Debug.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
