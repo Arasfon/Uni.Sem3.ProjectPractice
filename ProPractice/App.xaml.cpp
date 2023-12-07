@@ -4,7 +4,6 @@
 
 #include "Debug.h"
 #include "MainWindow.xaml.h"
-#include "ExamQuestionPage.xaml.h"
 
 using namespace winrt;
 using namespace Windows::Foundation;
