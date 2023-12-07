@@ -10,7 +10,7 @@ namespace winrt::ProPractice::implementation
 
         Windows::Foundation::IAsyncAction OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 
-        Windows::Foundation::IAsyncOperation<int64_t> GetQuestionCount() const;
+        [[nodiscard]] Windows::Foundation::IAsyncOperation<int64_t> GetQuestionCount() const;
 
         void StartButton_Click(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e) const;
 
