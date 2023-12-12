@@ -1,5 +1,5 @@
 import "ExamControlAction.idl";
-import "ExamQuestion.idl";
+import "IExamQuestion.idl";
 
 namespace ProPractice
 {
@@ -8,7 +8,7 @@ namespace ProPractice
         ExamController();
 
         UInt32 CurrentQuestion;
-        Windows.Foundation.Collections.IVector<ExamQuestion> Questions { get; };
+        Windows.Foundation.Collections.IVector<IExamQuestion> Questions { get; };
 
         event Windows.Foundation.EventHandler<ExamControlAction> OnControlAction;
         void CallControl(ExamControlAction action);

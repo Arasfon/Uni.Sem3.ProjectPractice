@@ -87,7 +87,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
     <ClCompile>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;SQLITE_ENABLE_MATH_FUNCTIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">stdcpp20</LanguageStandard>
       <LanguageStandard_C Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">stdc17</LanguageStandard_C>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdcpp20</LanguageStandard>
@@ -107,7 +107,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;SQLITE_ENABLE_MATH_FUNCTIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">stdcpp20</LanguageStandard>
       <LanguageStandard_C Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">stdc17</LanguageStandard_C>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdcpp20</LanguageStandard>
@@ -133,9 +133,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
-    <ClInclude Include="ExamAnswer.h" />
+    <ClInclude Include="ExamChoiceAnswer.h" />
+    <ClInclude Include="ExamChoiceQuestion.h" />
+    <ClInclude Include="ExamClassificationAnswer.h" />
+    <ClInclude Include="ExamClassificationQuestion.h" />
     <ClInclude Include="ExamController.h" />
-    <ClInclude Include="ExamQuestion.h" />
+    <ClInclude Include="ExamFreeInputQuestion.h" />
+    <ClInclude Include="ExamOrderingAnswer.h" />
+    <ClInclude Include="ExamOrderingQuestion.h" />
     <ClInclude Include="ExamQuestionHostPage.xaml.h">
       <DependentUpon>ExamQuestionHostPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -152,6 +157,7 @@
       <DependentUpon>ExamResultsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="ExamSelectionInRangeQuestion.h" />
     <ClInclude Include="ExamStartPage.xaml.h">
       <DependentUpon>ExamStartPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -177,6 +183,7 @@
       <DependentUpon>TitlePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="VectorUtils.h" />
     <ClInclude Include="WinRTUtils.h" />
     <ClInclude Include="WinUIEx.h" />
   </ItemGroup>
@@ -209,9 +216,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ExamAnswer.cpp" />
+    <ClCompile Include="ExamChoiceAnswer.cpp" />
+    <ClCompile Include="ExamChoiceQuestion.cpp" />
+    <ClCompile Include="ExamClassificationAnswer.cpp" />
+    <ClCompile Include="ExamClassificationQuestion.cpp" />
     <ClCompile Include="ExamController.cpp" />
-    <ClCompile Include="ExamQuestion.cpp" />
+    <ClCompile Include="ExamFreeInputQuestion.cpp" />
+    <ClCompile Include="ExamOrderingAnswer.cpp" />
+    <ClCompile Include="ExamOrderingQuestion.cpp" />
     <ClCompile Include="ExamQuestionHostPage.xaml.cpp">
       <DependentUpon>ExamQuestionHostPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -228,6 +240,7 @@
       <DependentUpon>ExamResultsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="ExamSelectionInRangeQuestion.cpp" />
     <ClCompile Include="ExamStartPage.xaml.cpp">
       <DependentUpon>ExamStartPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -270,10 +283,15 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Midl>
-    <Midl Include="ExamAnswer.idl" />
+    <Midl Include="ExamChoiceAnswer.idl" />
+    <Midl Include="ExamChoiceQuestion.idl" />
+    <Midl Include="ExamClassificationAnswer.idl" />
+    <Midl Include="ExamClassificationQuestion.idl" />
     <Midl Include="ExamControlAction.idl" />
     <Midl Include="ExamController.idl" />
-    <Midl Include="ExamQuestion.idl" />
+    <Midl Include="ExamFreeInputQuestion.idl" />
+    <Midl Include="ExamOrderingAnswer.idl" />
+    <Midl Include="ExamOrderingQuestion.idl" />
     <Midl Include="ExamQuestionHostPage.idl">
       <DependentUpon>ExamQuestionHostPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -291,6 +309,7 @@
       <DependentUpon>ExamResultsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="ExamSelectionInRangeQuestion.idl" />
     <Midl Include="ExamStartPage.idl">
       <DependentUpon>ExamStartPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -316,8 +335,8 @@
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png" />
     <Image Include="Assets\SplashScreen.scale-200.png" />
+    <Image Include="Assets\Square150x150Logo.scale-200.ico" />
     <Image Include="Assets\Square150x150Logo.scale-200.png" />
-    <Image Include="Assets\Square44x44Logo.scale-200.ico" />
     <Image Include="Assets\Square44x44Logo.scale-200.png" />
     <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Image Include="Assets\StoreLogo.png" />
@@ -336,6 +355,7 @@
       <FileType>Document</FileType>
     </CopyFileToFolders>
     <None Include="cpp.hint" />
+    <Midl Include="IExamQuestion.idl" />
     <None Include="packages.config" />
   </ItemGroup>
   <!--

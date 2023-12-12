@@ -21,13 +21,13 @@ namespace winrt::ProPractice::implementation
 
         ExtendsContentIntoTitleBar(true);
         SetTitleBar(AppTitleBar());
-        WinUIEx::SetIcon(*this, L"Assets/Square44x44Logo.scale-200.ico");
+        WinUIEx::SetIcon(*this, L"Assets/Square150x150Logo.scale-200.ico");
         WinUIEx::CenterOnScreen(*this);
     }
 
     void MainWindow::NavView_SelectionChanged(IInspectable const&, NavigationViewSelectionChangedEventArgs const& e)
     {
-        const auto selectedItem = unbox_value<IFrameworkElement>(e.SelectedItem());
+        const auto selectedItem = unbox_value<FrameworkElement>(e.SelectedItem());
         const TypeName pageTypeName { L"ProPractice." + unbox_value<hstring>(selectedItem.Tag()) + L"Page", TypeKind::Metadata };
         // ReSharper disable once CppExpressionWithoutSideEffects
         ContentFrame().Navigate(pageTypeName, *this);

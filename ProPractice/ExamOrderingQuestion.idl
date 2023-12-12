@@ -1,0 +1,12 @@
+import "IExamQuestion.idl";
+import "ExamOrderingAnswer.idl";
+
+namespace ProPractice
+{
+    runtimeclass ExamOrderingQuestion : IExamQuestion
+    {
+        ExamOrderingQuestion(Int64 id, String text);
+
+        Windows.Foundation.Collections.IObservableVector<ExamOrderingAnswer> Answers { get; };
+    }
+}

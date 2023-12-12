@@ -34,22 +34,43 @@
     <Midl Include="App.idl" />
     <Midl Include="MainWindow.idl" />
     <Midl Include="TheoryChapter.idl">
-      <Filter>Theory Structures</Filter>
-    </Midl>
-    <Midl Include="ExamAnswer.idl">
-      <Filter>Exam Structures</Filter>
+      <Filter>Theory</Filter>
     </Midl>
     <Midl Include="ExamController.idl">
-      <Filter>Exam Structures</Filter>
-    </Midl>
-    <Midl Include="ExamQuestion.idl">
-      <Filter>Exam Structures</Filter>
+      <Filter>Exam</Filter>
     </Midl>
     <Midl Include="ExamControlAction.idl">
-      <Filter>Exam Structures</Filter>
+      <Filter>Exam</Filter>
     </Midl>
     <Midl Include="ExamQuestionType.idl">
-      <Filter>Exam Structures</Filter>
+      <Filter>Exam</Filter>
+    </Midl>
+    <Midl Include="ExamChoiceQuestion.idl">
+      <Filter>Exam\Questions\Choice</Filter>
+    </Midl>
+    <Midl Include="ExamChoiceAnswer.idl">
+      <Filter>Exam\Questions\Choice</Filter>
+    </Midl>
+    <Midl Include="ExamSelectionInRangeQuestion.idl">
+      <Filter>Exam\Questions\Selection in Range</Filter>
+    </Midl>
+    <Midl Include="IExamQuestion.idl">
+      <Filter>Exam</Filter>
+    </Midl>
+    <Midl Include="ExamOrderingAnswer.idl">
+      <Filter>Exam\Questions\Ordering</Filter>
+    </Midl>
+    <Midl Include="ExamOrderingQuestion.idl">
+      <Filter>Exam\Questions\Ordering</Filter>
+    </Midl>
+    <Midl Include="ExamClassificationAnswer.idl">
+      <Filter>Exam\Questions\Classification</Filter>
+    </Midl>
+    <Midl Include="ExamClassificationQuestion.idl">
+      <Filter>Exam\Questions\Classification</Filter>
+    </Midl>
+    <Midl Include="ExamFreeInputQuestion.idl">
+      <Filter>Exam\Questions\Free Input</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
@@ -59,19 +80,37 @@
       <Filter>External Libraries\SQLite</Filter>
     </ClCompile>
     <ClCompile Include="TheoryChapter.cpp">
-      <Filter>Theory Structures</Filter>
+      <Filter>Theory</Filter>
     </ClCompile>
     <ClCompile Include="WinUIEx.cpp">
       <Filter>WinUIEx</Filter>
     </ClCompile>
-    <ClCompile Include="ExamAnswer.cpp">
-      <Filter>Exam Structures</Filter>
-    </ClCompile>
     <ClCompile Include="ExamController.cpp">
-      <Filter>Exam Structures</Filter>
+      <Filter>Exam</Filter>
     </ClCompile>
-    <ClCompile Include="ExamQuestion.cpp">
-      <Filter>Exam Structures</Filter>
+    <ClCompile Include="ExamChoiceAnswer.cpp">
+      <Filter>Exam\Questions\Choice</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamChoiceQuestion.cpp">
+      <Filter>Exam\Questions\Choice</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamFreeInputQuestion.cpp">
+      <Filter>Exam\Questions\Free Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamClassificationAnswer.cpp">
+      <Filter>Exam\Questions\Classification</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamClassificationQuestion.cpp">
+      <Filter>Exam\Questions\Classification</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamOrderingAnswer.cpp">
+      <Filter>Exam\Questions\Ordering</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamOrderingQuestion.cpp">
+      <Filter>Exam\Questions\Ordering</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamSelectionInRangeQuestion.cpp">
+      <Filter>Exam\Questions\Selection in Range</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,22 +119,45 @@
       <Filter>External Libraries\SQLite</Filter>
     </ClInclude>
     <ClInclude Include="TheoryChapter.h">
-      <Filter>Theory Structures</Filter>
+      <Filter>Theory</Filter>
     </ClInclude>
     <ClInclude Include="WinUIEx.h">
       <Filter>WinUIEx</Filter>
     </ClInclude>
-    <ClInclude Include="ExamAnswer.h">
-      <Filter>Exam Structures</Filter>
-    </ClInclude>
     <ClInclude Include="ExamController.h">
-      <Filter>Exam Structures</Filter>
+      <Filter>Exam</Filter>
     </ClInclude>
-    <ClInclude Include="ExamQuestion.h">
-      <Filter>Exam Structures</Filter>
-    </ClInclude>
-    <ClInclude Include="WinRTUtils.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="ExamChoiceAnswer.h">
+      <Filter>Exam\Questions\Choice</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamChoiceQuestion.h">
+      <Filter>Exam\Questions\Choice</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamFreeInputQuestion.h">
+      <Filter>Exam\Questions\Free Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamClassificationAnswer.h">
+      <Filter>Exam\Questions\Classification</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamClassificationQuestion.h">
+      <Filter>Exam\Questions\Classification</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamOrderingAnswer.h">
+      <Filter>Exam\Questions\Ordering</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamOrderingQuestion.h">
+      <Filter>Exam\Questions\Ordering</Filter>
+    </ClInclude>
+    <ClInclude Include="ExamSelectionInRangeQuestion.h">
+      <Filter>Exam\Questions\Selection in Range</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="WinRTUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -119,7 +181,7 @@
     <Image Include="Assets\LockScreenLogo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\Square44x44Logo.scale-200.ico">
+    <Image Include="Assets\Square150x150Logo.scale-200.ico">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -130,23 +192,44 @@
     <Filter Include="Pages">
       <UniqueIdentifier>{1d4be319-da60-4a52-a500-0903696070b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Theory Structures">
-      <UniqueIdentifier>{1f4a205c-a1fe-42c4-bba5-6261ac86d2e9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinUIEx">
       <UniqueIdentifier>{9cdd6f28-6122-427a-90f6-59a2e384d022}</UniqueIdentifier>
     </Filter>
     <Filter Include="Pages\Exam">
       <UniqueIdentifier>{2d1e641a-d1b2-485e-9b54-28044a8c5e8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Exam Structures">
-      <UniqueIdentifier>{159081ea-17cd-45cc-a4ed-b3cc9addb721}</UniqueIdentifier>
-    </Filter>
     <Filter Include="External Libraries">
       <UniqueIdentifier>{81bd7ac7-c498-4f22-a220-999862689b21}</UniqueIdentifier>
     </Filter>
     <Filter Include="External Libraries\SQLite">
       <UniqueIdentifier>{f543e8d8-4fe5-4cf2-99e7-228a1b22bcc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{ad199800-5ba4-4ad6-a50e-2d9c498cf4a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam">
+      <UniqueIdentifier>{159081ea-17cd-45cc-a4ed-b3cc9addb721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam\Questions">
+      <UniqueIdentifier>{533b32a1-80ae-4781-a651-e496d2ed9c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam\Questions\Choice">
+      <UniqueIdentifier>{d9d40b86-a2c2-473d-b23d-61fa88ea81ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam\Questions\Selection in Range">
+      <UniqueIdentifier>{cae44a21-231c-4cc9-a17f-91103c861f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam\Questions\Free Input">
+      <UniqueIdentifier>{bbe4f3d0-f240-4c72-a01c-94813d7dd81e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam\Questions\Classification">
+      <UniqueIdentifier>{8146a3d2-89cd-450f-aa9d-6fdd5e008cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exam\Questions\Ordering">
+      <UniqueIdentifier>{db03a9e3-2bfc-498e-9946-6b1959fbd8ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Theory">
+      <UniqueIdentifier>{1f4a205c-a1fe-42c4-bba5-6261ac86d2e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

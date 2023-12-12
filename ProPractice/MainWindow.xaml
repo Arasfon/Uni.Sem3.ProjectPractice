@@ -28,7 +28,7 @@
                 <ColumnDefinition x:Name="RightDragColumn" Width="*"/>
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="TitleBarIcon" Source="Assets/Square44x44Logo.scale-200.ico" Grid.Column="1" Width="16" Height="16" Margin="17,0,0,0"/>
+            <Image x:Name="TitleBarIcon" Source="Assets/Square150x150Logo.scale-200.ico" Grid.Column="1" Width="16" Height="16" Margin="17,0,0,0"/>
             <TextBlock x:Name="TitleTextBlock" Text="{x:Bind Title, Mode=OneWay}" Grid.Column="2" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" Margin="16,0,0,0"/>
         </Grid>
 

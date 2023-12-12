@@ -1,0 +1,11 @@
+namespace ProPractice
+{
+    runtimeclass ExamOrderingAnswer
+    {
+        ExamOrderingAnswer(String text, Int32 correctOrder);
+
+        String Text { get; };
+        UInt32 CorrectOrder { get; };
+        UInt32 Order;
+    }
+}

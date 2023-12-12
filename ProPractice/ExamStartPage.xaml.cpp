@@ -41,8 +41,7 @@ namespace winrt::ProPractice::implementation
         }
 
         sqlite3_stmt* sqlStatement;
-        const auto sql = "SELECT COUNT(*) FROM exam_questions;";
-        resultCode = sqlite3_prepare_v2(db, sql, -1, &sqlStatement, nullptr);
+        resultCode = sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM exam_questions;", -1, &sqlStatement, nullptr);
         if (resultCode != SQLITE_OK)
         {
             std::string s = "Не удалось подготовить запрос для базы данных: ";

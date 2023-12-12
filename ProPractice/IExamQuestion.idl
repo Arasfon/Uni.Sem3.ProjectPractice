@@ -1,0 +1,13 @@
+import "ExamQuestionType.idl";
+
+namespace ProPractice
+{
+    interface IExamQuestion
+    {
+        Int64 Id { get; };
+        String Text { get; };
+        ExamQuestionType Type { get; };
+        Boolean IsAnswered();
+        Boolean IsAnsweredCorrectly();
+    };
+}

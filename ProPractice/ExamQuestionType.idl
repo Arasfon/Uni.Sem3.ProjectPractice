@@ -4,6 +4,9 @@ namespace ProPractice
     {
         MultipleChoice,
         SingleChoice,
-        FreeInput
+        FreeInput,
+        Ordering,
+        SelectionInRange,
+        Classification
     };
 }

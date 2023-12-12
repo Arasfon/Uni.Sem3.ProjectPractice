@@ -177,8 +177,7 @@ namespace winrt::ProPractice::implementation
         }
 
         sqlite3_stmt* sqlStatement;
-        const auto sql = "SELECT id, title, parent_id FROM book_chapters ORDER BY parent_id ASC, id ASC;";
-        resultCode = sqlite3_prepare_v2(db, sql, -1, &sqlStatement, nullptr);
+        resultCode = sqlite3_prepare_v2(db, "SELECT id, title, parent_id FROM book_chapters ORDER BY parent_id ASC, id ASC;", -1, &sqlStatement, nullptr);
         if (resultCode != SQLITE_OK)
         {
             std::string s = "Не удалось подготовить запрос для базы данных: ";

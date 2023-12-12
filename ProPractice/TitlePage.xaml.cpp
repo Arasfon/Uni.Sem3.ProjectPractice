@@ -125,8 +125,7 @@ namespace winrt::ProPractice::implementation
         }
 
         sqlite3_stmt* sqlStatement;
-        const auto sql = "SELECT value FROM parameters WHERE name = 'data_version';";
-        resultCode = sqlite3_prepare_v2(db, sql, -1, &sqlStatement, nullptr);
+        resultCode = sqlite3_prepare_v2(db, "SELECT value FROM parameters WHERE name = 'data_version';", -1, &sqlStatement, nullptr);
         if (resultCode != SQLITE_OK)
         {
             sqlite3_close(db);

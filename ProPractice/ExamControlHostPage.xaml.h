@@ -14,12 +14,7 @@ namespace winrt::ProPractice::implementation
 
         void OnControlAction(IInspectable const& sender, ExamControlAction action);
 
-        Windows::Foundation::IAsyncAction LoadQuestions();
-
-        template <typename T>
-        void ShuffleVector(Windows::Foundation::Collections::IVector<T> const& vector);
-        template <typename T>
-        void SwapVectorItems(Windows::Foundation::Collections::IVector<T> const& vector, unsigned int firstIndex, unsigned int secondIndex);
+        Windows::Foundation::IAsyncAction LoadQuestions() const;
 
     private:
         ProPractice::MainWindow _mainWindow = nullptr;

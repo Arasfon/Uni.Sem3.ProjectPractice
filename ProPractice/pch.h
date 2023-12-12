@@ -27,3 +27,4 @@
 
 #include "sqlite3.h"
 #include "WinRTUtils.h"
+#include "VectorUtils.h"

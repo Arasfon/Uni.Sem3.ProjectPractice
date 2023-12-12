@@ -1,4 +1,5 @@
 #include "pch.h"
+
 #include "ExamResultsPage.xaml.h"
 #if __has_include("ExamResultsPage.g.cpp")
 #include "ExamResultsPage.g.cpp"
@@ -29,16 +30,7 @@ namespace winrt::ProPractice::implementation
         {
             auto question = _examController.Questions().GetAt(i);
 
-            bool isCorrect = true;
-
-            for (auto answer : question.Answers())
-            {
-                if (answer.IsCorrect() != answer.IsChosen())
-                {
-                    isCorrect = false;
-                    break;
-                }
-            }
+            const bool isCorrect = question.IsAnsweredCorrectly();
 
             StackPanel sp;
             sp.Padding({ 16, 16, 16, 16 });

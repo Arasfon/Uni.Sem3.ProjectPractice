@@ -1,0 +1,13 @@
+import "IExamQuestion.idl";
+import "ExamClassificationAnswer.idl";
+
+namespace ProPractice
+{
+    runtimeclass ExamClassificationQuestion : IExamQuestion
+    {
+        ExamClassificationQuestion(Int64 id, String text);
+
+        Windows.Foundation.Collections.IVector<ExamClassificationAnswer> Answers { get; };
+        Windows.Foundation.Collections.IVector<String> Categories { get; };
+    }
+}
