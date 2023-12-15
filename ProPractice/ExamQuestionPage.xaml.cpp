@@ -437,6 +437,8 @@ namespace winrt::ProPractice::implementation
 
                             answer.UserCategoryId(unbox_value<int32_t>(targetListView.Tag()));
 
+                            _validDropReceived = true;
+
                             e.AcceptedOperation(Windows::ApplicationModel::DataTransfer::DataPackageOperation::Move);
                             deferral.Complete();
                         }
@@ -444,9 +446,10 @@ namespace winrt::ProPractice::implementation
 
                 auto listViewDragItemsCompletedHandler = [this](ListViewBase const& sender, DragItemsCompletedEventArgs const& e)
                     {
-                        // TODO: Removes also when reordering (after fix set CanReorderItems to true on all ListViews)
-                        if (e.DropResult() == Windows::ApplicationModel::DataTransfer::DataPackageOperation::Move)
+                        if (_validDropReceived && e.DropResult() == Windows::ApplicationModel::DataTransfer::DataPackageOperation::Move)
                         {
+                            _validDropReceived = false;
+
                             for (auto answerBoxed : e.Items())
                             {
                                 auto answer = unbox_value<ExamClassificationAnswer>(answerBoxed);
@@ -468,7 +471,7 @@ namespace winrt::ProPractice::implementation
                 notClassifiedListView.BorderThickness({ 1, 1, 1, 1 });
                 notClassifiedListView.BorderBrush(unbox_value<Media::Brush>(Application::Current().Resources().Lookup(box_value(L"SystemControlForegroundBaseMediumLowBrush"))));
                 notClassifiedListView.ItemTemplate(unbox_value<DataTemplate>(Resources().Lookup(box_value(L"ClassificationQuestionListViewItemTemplate"))));
-                notClassifiedListView.CanReorderItems(false);
+                notClassifiedListView.CanReorderItems(true);
                 notClassifiedListView.CanDragItems(true);
                 notClassifiedListView.AllowDrop(true);
                 // ReSharper disable once CppExpressionWithoutSideEffects
@@ -519,7 +522,7 @@ namespace winrt::ProPractice::implementation
                     categoryListView.BorderThickness({ 1, 1, 1, 1 });
                     categoryListView.BorderBrush(unbox_value<Media::Brush>(Application::Current().Resources().Lookup(box_value(L"SystemControlForegroundBaseMediumLowBrush"))));
                     categoryListView.ItemTemplate(unbox_value<DataTemplate>(Resources().Lookup(box_value(L"ClassificationQuestionListViewItemTemplate"))));
-                    categoryListView.CanReorderItems(false);
+                    categoryListView.CanReorderItems(true);
                     categoryListView.CanDragItems(true);
                     categoryListView.AllowDrop(true);
                     // ReSharper disable once CppExpressionWithoutSideEffects

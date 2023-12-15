@@ -13,6 +13,7 @@ namespace winrt::ProPractice::implementation
     private:
         ExamController _examController;
         bool _enterHandled = false;
+        bool _validDropReceived = false;
     };
 }
 
