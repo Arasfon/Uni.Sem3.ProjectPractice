@@ -1,0 +1,11 @@
+namespace FiberOpticCommsCourseware
+{
+    runtimeclass ExamChoiceAnswer
+    {
+        ExamChoiceAnswer(String text, Boolean correct);
+
+        String Text { get; };
+        Boolean Correct { get; };
+        Boolean Chosen;
+    }
+}

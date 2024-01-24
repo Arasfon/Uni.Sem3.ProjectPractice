@@ -1,8 +1,0 @@
-namespace ProPractice
-{
-    [default_interface]
-    runtimeclass ExamQuestionPage : Microsoft.UI.Xaml.Controls.Page
-    {
-        ExamQuestionPage();
-    }
-}

@@ -1,0 +1,11 @@
+namespace FiberOpticCommsCourseware
+{
+    runtimeclass ExamClassificationAnswer
+    {
+        ExamClassificationAnswer(String text, Int32 correctCategoryId);
+
+        String Text { get; };
+        Int32 CorrectCategoryId { get; };
+        Int32 UserCategoryId;
+    }
+}

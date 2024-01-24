@@ -1,0 +1,12 @@
+import "IExamQuestion.idl";
+
+namespace FiberOpticCommsCourseware
+{
+    runtimeclass ExamFreeInputQuestion : IExamQuestion
+    {
+        ExamFreeInputQuestion(Int64 id, String text);
+
+        Windows.Foundation.Collections.IVector<String> CorrectAnswers { get; };
+        String UserAnswer;
+    }
+}

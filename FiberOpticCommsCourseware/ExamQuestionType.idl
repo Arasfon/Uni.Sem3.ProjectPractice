@@ -1,0 +1,12 @@
+namespace FiberOpticCommsCourseware
+{
+    enum ExamQuestionType
+    {
+        MultipleChoice,
+        SingleChoice,
+        FreeInput,
+        Ordering,
+        SelectionInRange,
+        Classification
+    };
+}

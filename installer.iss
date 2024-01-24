@@ -4,7 +4,7 @@
 #define MyAppName "Волоконно-оптические линни связи — Основы"
 #define MyAppVersion "3.1.0"
 #define MyAppPublisher "Egor Boyarkin"
-#define MyAppExeName "ProPractice.exe"
+#define MyAppExeName "FiberOpticCommsCourseware.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -34,8 +34,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "ProPractice\bin\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "ProPractice\bin\Release\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.xbf,*.pdb,*.lib,*.exp"
+Source: "FiberOpticCommsCourseware\bin\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "FiberOpticCommsCourseware\bin\Release\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.xbf,*.pdb,*.lib,*.exp"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

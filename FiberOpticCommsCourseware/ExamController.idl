@@ -1,0 +1,16 @@
+import "ExamControlAction.idl";
+import "IExamQuestion.idl";
+
+namespace FiberOpticCommsCourseware
+{
+    runtimeclass ExamController
+    {
+        ExamController();
+
+        UInt32 CurrentQuestion;
+        Windows.Foundation.Collections.IVector<IExamQuestion> Questions { get; };
+
+        event Windows.Foundation.EventHandler<ExamControlAction> OnControlAction;
+        void CallControl(ExamControlAction action);
+    };
+}

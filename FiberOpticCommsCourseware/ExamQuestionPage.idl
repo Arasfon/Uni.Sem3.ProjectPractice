@@ -1,0 +1,8 @@
+namespace FiberOpticCommsCourseware
+{
+    [default_interface]
+    runtimeclass ExamQuestionPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        ExamQuestionPage();
+    }
+}

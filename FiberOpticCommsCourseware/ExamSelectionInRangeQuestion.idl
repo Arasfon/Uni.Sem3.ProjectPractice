@@ -1,0 +1,15 @@
+import "IExamQuestion.idl";
+
+namespace FiberOpticCommsCourseware
+{
+    runtimeclass ExamSelectionInRangeQuestion : IExamQuestion
+    {
+        ExamSelectionInRangeQuestion(Int64 id, String text, Double minimum, Double maximum, Double step, Double correctAnswer);
+
+        Double Minimum { get; };
+        Double Maximum { get; };
+        Double Step { get; };
+        Double CorrectAnswer { get; };
+        Double UserAnswer;
+    }
+}

@@ -1,0 +1,13 @@
+namespace FiberOpticCommsCourseware
+{
+    enum ExamControlAction
+    {
+        Start,
+        ContinueForward,
+        ContinueBackward,
+        QuestionSelect,
+        JumpToCurrentQuestion,
+        End,
+        Reset
+    };
+}
