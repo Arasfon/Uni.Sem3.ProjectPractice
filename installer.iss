@@ -34,8 +34,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "FiberOpticCommsCourseware\bin\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "FiberOpticCommsCourseware\bin\Release\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.xbf,*.pdb,*.lib,*.exp"
+Source: "src\FiberOpticCommsCourseware\bin\Release\x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "src\FiberOpticCommsCourseware\bin\Release\x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.xbf,*.pdb,*.lib,*.exp"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
